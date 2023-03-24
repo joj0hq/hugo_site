@@ -125,8 +125,8 @@ menu:
       name: blog
       url: /posts
       weight: 9
-    - identifier: products
-      name: products
+    - identifier: product
+      name: product
       url: /products
       weight: 9
     # - identifier: categories
