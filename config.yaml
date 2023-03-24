@@ -29,7 +29,7 @@ params:
       Portfolio,
       PaperMod,
     ]
-  author: Me
+  # author: Me
   images:
     [
       "https://pbs.twimg.com/profile_images/1555020494113751040/2OFqgjR8_400x400.jpg",
@@ -104,10 +104,10 @@ params:
     hiddenInList: true # hide on list pages and home
     hiddenInSingle: true # hide on single page
 
-  editPost:
-    URL: "https://github.com/joj0hq/hugo_site/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+  # editPost:
+  #   URL: "https://github.com/joj0hq/hugo_site/content"
+  #   Text: "Suggest Changes" # edit text
+  #   appendFilePath: true # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html
