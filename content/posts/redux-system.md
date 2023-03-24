@@ -10,7 +10,7 @@ tags: ["react", "redux", "js", "frontend", "初心者向け"]
 description: "【入門編】Reduxによる状態管理の仕組みを理解する"
 ---
 
-# まず結論から
+## まず結論から
 
 [zenn の記事の転載です。](https://zenn.dev/jojo/articles/25c10b27783093)
 
@@ -26,7 +26,7 @@ Redux を理解する上では、この図解(引用元：[Redux Application Dat
 
 「ここが間違ってる！」や「もっとこんな仕組みが使われてるよ！」等のツッコミがあれば、どしどし貰えると助かります！(そのために書いてるみたいなところも多いので！)
 
-# Redux とは
+## Redux とは
 
 [Redux](https://redux.js.org/)は、React が扱う UI の state(状態)を管理をするためのフレームワークです。
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/3bd8bfcf-a885-b584-294c-f307b70e4820.png)
@@ -36,7 +36,7 @@ React 以外にも AngularJS や jQuery などと併用して使用すること�
 
 [Redux - GitHub](https://github.com/reduxjs/redux)
 
-# Redux の 3 原則（Three Principles）
+## Redux の 3 原則（Three Principles）
 
 Redux の基本設計は以下の 3 つの原則に基づいて設計されています。
 順を追って見ていきましょう。
@@ -81,7 +81,7 @@ const store2 = createStore(sample);
 
 ![State is read-only](https://storage.googleapis.com/zenn-user-upload/jjsyg69aqpszdrftdby7fh07jx8m)
 
-# 全体構造
+## 全体構造
 
 ここで、改めて全体構造(引用元:
 [Redux. From twitter hype to production](http://slides.com/jenyaterpil/redux-from-twitter-hype-to-production#/27]))を確認してみましょう。
@@ -99,7 +99,7 @@ const store2 = createStore(sample);
 では、具体的なアプリケーションを例に出して解説していきたいのですが、
 その前にざっくり構成要素の説明をしておきます。
 
-# 構成要素
+## 構成要素
 
 構成要素は、以下の 7 つです。
 1 つずつ見ていきましょう。
@@ -112,21 +112,21 @@ const store2 = createStore(sample);
 - Reducer
 - Store
 
-## View: ユーザーの見る画面
+### View: ユーザーの見る画面
 
 View とは、実際にユーザーに表示される画面のことを指します。
 ユーザーがボタンをクリックしたり、テキストを入力することでイベントが発行されるので、この画面へイベントが処理の起点となります。
 
 ![redux_fig3.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/e88bcbd4-92d4-0d9c-510a-99b220430cbe.png)
 
-## ActionCreator: アクションを生成する
+### ActionCreator: アクションを生成する
 
 ActionCreator は、その名の通り、アクションを生成する処理を行います。
 図解されている部分では、青いダイアログで示されている Actions に対応しています。
 
 ![redux_fig4.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/f2e55558-8014-ce49-cd75-ada456bbd79f.png)
 
-## Action: ユーザーの入力したアクション
+### Action: ユーザーの入力したアクション
 
 Action とは、ユーザーが入力したアクションのことを指します。
 例えば、ボタンをクリックしたり、テキストを入力することを指しています。
@@ -134,7 +134,7 @@ Action とは、ユーザーが入力したアクションのことを指しま�
 
 ![redux_fig5.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/553acf7e-f450-9040-983f-31307d3cad54.png)
 
-## Middleware: アクションをウォッチして、副作用を取り込む
+### Middleware: アクションをウォッチして、副作用を取り込む
 
 Middleware とは、アクションは発行されることを監視して、ある特定の処理に対して副作用を取り込む処理を行います。
 例えば、ボタンをクリックした際にサーバーへ API を叩きに行く処理が発生する場合は、この Middleware が API への接続の処理を担っています。
@@ -142,7 +142,7 @@ Middleware とは、アクションは発行されることを監視して、あ
 
 ![redux_fig6.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/912dc342-6a0d-d75c-2d4d-43036bf3ac47.png)
 
-## Reducer: アプリケーションの状態を書き換える事が唯一できる
+### Reducer: アプリケーションの状態を書き換える事が唯一できる
 
 Reducer とは、アプリケーションの状態を書き換える事が唯一できるものです。
 Redux の基本設計の 1 つである Single source of truth(ソースは１つだけ)でもあるように State を書き換える事ができるのはこの Reducer のみです。
@@ -150,21 +150,21 @@ Redux の基本設計の 1 つである Single source of truth(ソースは１�
 
 ![redux_fig7.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/4200ed43-eb67-bfe5-f6b6-e2d352610ccc.png)
 
-## State: アプリケーションの状態
+### State: アプリケーションの状態
 
 State とは、アプリケーションの状態を示しています。
 例えば、チェックボックスをチェックしているとか、API を叩いてデータを取得できたなどの状態を指します。
 
 ![redux_fig8.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/e91e1cf5-a7cb-ac86-9dc9-078c892761f7.png)
 
-## Store: アプリケーションの状態を保存する
+### Store: アプリケーションの状態を保存する
 
 Store とは、アプリケーションの状態を保存する場所です。
 State を格納しており、Reducer から State を変更された場合、Store に保存されている State が書き換わります。
 
 ![redux_fig9.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/236878/26aac20b-f77a-b575-e157-de4401949eec.png)
 
-# 処理の流れ
+## 処理の流れ
 
 では、具体的にタスク管理 TODO アプリを例に処理の流れを見ていきましょう。
 

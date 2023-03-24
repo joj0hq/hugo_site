@@ -12,7 +12,7 @@ type = "post"
 
 +++
 
-# 今回つくるもの
+## 今回つくるもの
 
 今回作るのは静的な Web サイトです。
 
@@ -22,7 +22,7 @@ type = "post"
 
 ここでは、Firebase と Hugo をつかってさくっと実装していきます。
 
-# Hugo とは？
+## Hugo とは？
 
 ![HUGO](/images/2019/11/2019-11-10-p3.png)
 
@@ -38,7 +38,7 @@ HUGO とは、一体何でしょうか。
 
 つまり、HUGO とは静的な html を生成する事ができる静的サイトを生成するフレームワークです。
 
-## HUGO のメリット
+### HUGO のメリット
 
 - 静的なページなので高速
 - セキュリティ面でのリスクを減らすことができる
@@ -53,7 +53,7 @@ HUGO とは、一体何でしょうか。
 
 逆に Markdown 記法になれていない方にとっては WordPress のような GUI 的にマークダウンできるフレームワークのほうが便利かもしれませんね。
 
-## HUGO のデメリット
+### HUGO のデメリット
 
 - 記述が独特で学習コストがかかるところがある
 - 既存のテーマを使用するとカスタマイズが面倒
@@ -63,7 +63,7 @@ HUGO とは、一体何でしょうか。
 
 そのため、自分にあったサイトにカスタマイズをしたい！と思ったときには最低限の JavaScript の知識は実装に必要になってしまいます。
 
-# Hugo でローカルに静的なサイトを作るまで
+## Hugo でローカルに静的なサイトを作るまで
 
 まずは HUGO でローカル環境で静的なサイトを作るところまでさくっと行っていきましょう。
 
@@ -71,7 +71,7 @@ HUGO とは、一体何でしょうか。
 
 それでは、行ってみましょう。
 
-## Hugo のインストール
+### Hugo のインストール
 
 今回は mac の環境で開発を行っていきます。
 
@@ -91,7 +91,7 @@ hugo version
 
 ちなみに Lunix や Windows 環境の方は公式からインストールの方法を確認することができますので[コチラ](https://gohugo.io/getting-started/installing/)を読んでみてください。
 
-## Web サイトの作成
+### Web サイトの作成
 
 次に Web サイトを作っていきます。
 
@@ -120,7 +120,7 @@ Visit https://gohugo.io/ for quickstart guide and full documentation.
 
 次にこのコメントでも述べているように HUGO のサイトテーマを追加してみましょう。
 
-## テーマの追加
+### テーマの追加
 
 テーマは[Hugo Themes](https://themes.gohugo.io/)で探すことができます。
 
@@ -142,7 +142,7 @@ echo 'theme = "hugo-coder-portfolio"' >> config.toml
 
 これで hugo-coder-portfolio をテーマとして使用することを明示的に設定することができました。
 
-## テスト記事の作成
+### テスト記事の作成
 
 最後に Hello World 的な記事を追加してみましょう。
 
@@ -165,7 +165,7 @@ Hello World
 
 さあこれですべての準備が整いました。最後に localhost で表示を確認してみましょう。
 
-## localhost で動作を確認する
+### localhost で動作を確認する
 
 ローカル環境で表示を確認するには、
 
@@ -181,28 +181,20 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 
 早速アクセスしてみましょう。
 
-## 静的ページの生成（ビルド）
+### 静的ページの生成（ビルド）
 
 ```sh
 hugo
 ```
 
-# Firebase とは？
-
-Firebase 以外になにと比較した？
-
-# Firebase でサイトを公開するまで
-
-## プロジェクトの作成
-
-## Firebase Tools のインストール
+### Firebase Tools のインストール
 
 ```sh
 npm i npm
 $ npm install -g firebase-tools
 ```
 
-## firebase の初期設定
+### firebase の初期設定
 
 hugo を選択するだけ
 
@@ -213,12 +205,12 @@ $ firebase init
 $ firebase use --add
 ```
 
-## firebase deploy
+### firebase deploy
 
 ```sh
 firebase deploy
 ```
 
-# まとめ
+## まとめ
 
 Hugo と firebase でクイックに自分のブログを作ることができました。ぜひ。

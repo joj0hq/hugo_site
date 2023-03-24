@@ -2,9 +2,10 @@
 title: "Products"
 date: 2023-03-24T22:09:09+09:00
 draft: false
+showtoc: false
 ---
 
-# ミッケ
+## ミッケ
 
 ![ミッケトラベル](/images/micce_travel.png)
 
@@ -25,7 +26,7 @@ draft: false
 
 [いま注目のスポットが見つかる「ミッケ」って知ってる？アプリ 1 つで、検索・予約・プラン作成の 3 役をこなせるよ](https://isuta.jp/category/iphone/2023/01/616603)
 
-# ミッケ β 版
+## ミッケ β 版
 
 ![ミッケカフェ](/images/micce_cafe.jpg)
 
