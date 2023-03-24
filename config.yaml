@@ -57,11 +57,11 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
+    favicon: "/images/favicon.png"
+    favicon16x16: "/images/favicon_16.png"
+    favicon32x32: "/images/favicon_32.png"
+    apple_touch_icon: "/images/favicon.png"
+    safari_pinned_tab: "/images/favicon.png"
 
   label:
     text: "joj0hq.com"
@@ -123,7 +123,7 @@ menu:
   main:
     - identifier: blog
       name: blog
-      url: /posts/
+      url: /posts
       weight: 9
     - identifier: products
       name: products
@@ -139,7 +139,7 @@ menu:
     #   weight: 20
     - identifier: about
       name: about
-      url: /about/
+      url: /about
       weight: 100
     - identifier: contacts
       name: contacts
