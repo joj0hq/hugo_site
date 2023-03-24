@@ -1,5 +1,5 @@
-baseURL: "https://examplesite.com/"
-title: jojo's page
+baseURL: "https://joj0hq.com/"
+title: joj0hq.com
 paginate: 5
 theme: PaperMod
 
@@ -64,7 +64,7 @@ params:
     safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "jojo"
+    text: "joj0hq.com"
     icon: /apple-touch-icon.png
     iconHeight: 35
 
@@ -125,6 +125,10 @@ menu:
       name: blog
       url: /posts/
       weight: 9
+    - identifier: products
+      name: products
+      url: /products
+      weight: 9
     # - identifier: categories
     #   name: categories
     #   url: /categories/
@@ -137,6 +141,10 @@ menu:
       name: about
       url: /about/
       weight: 100
+    - identifier: contacts
+      name: contacts
+      url: https://twitter.com/joj0hq
+      weight: 1000
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
