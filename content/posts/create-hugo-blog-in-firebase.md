@@ -77,14 +77,14 @@ HUGO とは、一体何でしょうか。
 
 brew を使って HUGO をインストールしましょう。
 
-```
-$ brew install hugo
+```sh
+brew install hugo
 ```
 
 実際にインストールが済んだかどうかは
 
-```
-$ hugo version
+```sh
+hugo version
 ```
 
 バージョン確認のコマンドが通るかどうかで確認しましょう。
@@ -95,8 +95,8 @@ $ hugo version
 
 次に Web サイトを作っていきます。
 
-```
-$ hugo new site jojo-hack(好きな名前をつけてください)
+```sh
+hugo new site jojo-hack(好きな名前をつけてください)
 ```
 
 このようなコマンドを叩いてもらうと、以下のようなコメントが返ってくるはずです。
@@ -128,16 +128,16 @@ Visit https://gohugo.io/ for quickstart guide and full documentation.
 
 ここでは、JOJO HACK のテーマに使用している**hugo-coder-portfolio**を使います。
 
-```
-$ cd jojo-hack // 対象のプロジェクトに移動
+```sh
+cd jojo-hack // 対象のプロジェクトに移動
 $ git init
 $ git submodule add https://github.com/naro143/hugo-coder-portfolio.git themes/hugo-coder-portfolio
 ```
 
 これでテーマを追加することができたので、あとは設定ファイルである config.toml の記入を修正しましょう。
 
-```
-$ echo 'theme = "hugo-coder-portfolio"' >> config.toml
+```sh
+echo 'theme = "hugo-coder-portfolio"' >> config.toml
 ```
 
 これで hugo-coder-portfolio をテーマとして使用することを明示的に設定することができました。
@@ -146,8 +146,8 @@ $ echo 'theme = "hugo-coder-portfolio"' >> config.toml
 
 最後に Hello World 的な記事を追加してみましょう。
 
-```
-$ hugo new posts/hello-world.md
+```sh
+hugo new posts/hello-world.md
 ```
 
 これで新しく記事を作成することができました。
@@ -169,22 +169,22 @@ Hello World
 
 ローカル環境で表示を確認するには、
 
-```
-$ hugo server -D
+```sh
+hugo server -D
 ```
 
 このコマンドで OK です。これで Web サーバがローカルに構築されました。
 
-```
-$ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+```sh
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 ```
 
 早速アクセスしてみましょう。
 
 ## 静的ページの生成（ビルド）
 
-```
-$ hugo
+```sh
+hugo
 ```
 
 # Firebase とは？
@@ -197,8 +197,8 @@ Firebase 以外になにと比較した？
 
 ## Firebase Tools のインストール
 
-```
-$ npm i npm
+```sh
+npm i npm
 $ npm install -g firebase-tools
 ```
 
@@ -206,8 +206,8 @@ $ npm install -g firebase-tools
 
 hugo を選択するだけ
 
-```
-$ firebase login
+```sh
+firebase login
 $ cd your-firebase-project
 $ firebase init
 $ firebase use --add
@@ -215,8 +215,8 @@ $ firebase use --add
 
 ## firebase deploy
 
-```
-$ firebase deploy
+```sh
+firebase deploy
 ```
 
 # まとめ
