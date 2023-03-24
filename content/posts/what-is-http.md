@@ -1,6 +1,6 @@
 +++
-categories = ["AWS"]
-tags = ["terraform"]
+categories = ["http"]
+tags = ["http", "book", "beginner"]
 date = "2019-07-15"
 description = ""
 featured = "terraform-beginner.png"
