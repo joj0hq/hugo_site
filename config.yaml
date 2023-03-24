@@ -1,5 +1,5 @@
 baseURL: "https://examplesite.com/"
-title: jojo
+title: jojo's page
 paginate: 5
 theme: PaperMod
 
@@ -15,17 +15,25 @@ minify:
   minifyOutput: true
 
 params:
-  homeInfoParams:
-      Title: Hi there wave
-      Content: Can be Info, links, about...
-
-  env: development # to enable google analytics, opengraph, twitter-cards and schema.
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: jojo
-  description: "jojo description"
-  keywords: [Blog, Portfolio, PaperMod]
+  description: "jojoが気ままにエンジニアリングや個人の考えを発信します。"
+  keywords:
+    [
+      Golang,
+      ドメイン駆動設計,
+      Dart,
+      エンジニア,
+      プロダクト開発,
+      Blog,
+      Portfolio,
+      PaperMod,
+    ]
   author: Me
-  # author: ["Me", "You"] # multiple authors
-  images: ["https://pbs.twimg.com/profile_images/1555020494113751040/2OFqgjR8_400x400.jpg"]
+  images:
+    [
+      "https://pbs.twimg.com/profile_images/1555020494113751040/2OFqgjR8_400x400.jpg",
+    ]
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -34,7 +42,7 @@ params:
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
@@ -56,7 +64,7 @@ params:
     safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "Home"
+    text: "jojo"
     icon: /apple-touch-icon.png
     iconHeight: 35
 
@@ -64,21 +72,16 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: jojo
-    subtitle: "This is subtitle"
+    subtitle: "Software Engineer"
     imageUrl: "https://pbs.twimg.com/profile_images/1555020494113751040/2OFqgjR8_400x400.jpg"
     imageWidth: 120
     imageHeight: 120
     imageTitle: my image
-    buttons:
-      - name: Posts
-        url: posts
-      - name: Tags
-        url: tags
-
-  # home-info mode
-  homeInfoParams:
-    Title: "Hi there \U0001F44B"
-    Content: Welcome to my blog
+    # buttons:
+    #   - name: Posts
+    #     url: posts
+    #   - name: Tags
+    #     url: tags
 
   socialIcons:
     - name: twitter
@@ -88,13 +91,13 @@ params:
     - name: facebook
       url: "https://facebook.com/jotaro.yuza"
 
-  analytics:
-    google:
-      SiteVerificationTag: "XYZabc"
-    bing:
-      SiteVerificationTag: "XYZabc"
-    yandex:
-      SiteVerificationTag: "XYZabc"
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"
+  #   bing:
+  #     SiteVerificationTag: "XYZabc"
+  #   yandex:
+  #     SiteVerificationTag: "XYZabc"
 
   cover:
     hidden: true # hide everywhere but not in structured data
@@ -102,7 +105,7 @@ params:
     hiddenInSingle: true # hide on single page
 
   editPost:
-    URL: "https://github.com/<path_to_repo>/content"
+    URL: "https://github.com/joj0hq/hugo_site/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
@@ -118,6 +121,10 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
+    - identifier: blog
+      name: blog
+      url: /posts/
+      weight: 9
     - identifier: categories
       name: categories
       url: /categories/
@@ -126,10 +133,10 @@ menu:
       name: tags
       url: /tags/
       weight: 20
-    - identifier: example
-      name: example.org
-      url: https://example.org
-      weight: 30
+    - identifier: about
+      name: about
+      url: /about/
+      weight: 100
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
