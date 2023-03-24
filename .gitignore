@@ -1,2 +1,6 @@
 themes/*
 !themes/.gitkeep
+public/*
+!public/.gitkeep
+.firebaserc
+.firebase/*
