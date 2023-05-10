@@ -90,6 +90,8 @@ params:
       url: "https://github.com/joj0hq"
     - name: facebook
       url: "https://facebook.com/jotaro.yuza"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/joj0hq/"
 
   # analytics:
   #   google:
