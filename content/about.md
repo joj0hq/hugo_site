@@ -69,5 +69,6 @@ BiHint 事業部にて、会員数 30 万人を擁する「中小経営者向け
 
 # 参考 URL
 
+- [#78 プロダクトの本質的な課題解決にフォーカスしたい【ゲスト：湯座丞太郎さん(Software Engineer)のキャリア】|10X.fm](https://open.spotify.com/episode/1UFUq9Xugcgek7R2bbdAJN)
 - [エンジニアの枠を囚われないプロダクト開発 - 事業づくりに求められる「越境」をするには|Visonal Engineering Blog](https://engineering.visional.inc/blog/430/how_to_cross_borders_in_bizhint/)
 - [ゆざ、株式会社 PLAN を卒業します。|MIYABI LAB](https://miyabi-lab.space/blog/32)
