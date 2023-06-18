@@ -3,12 +3,10 @@ categories = ["AWS"]
 tags = ["terraform", "aws", "beginner"]
 date = "2019-07-15"
 description = ""
-featured = "terraform-beginner.png"
-featuredalt = "terraform"
-featuredpath = "date"
 linktitle = ""
 title = "【AWS入門】terraformでVPC+EC2構築を自動化する"
 type = "post"
+cover.image = "/images/2019/07/terraform-beginner.png"
 
 +++
 

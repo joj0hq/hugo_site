@@ -1,13 +1,11 @@
 +++
 categories = ["10X"]
 tags = ["10X", "入社エントリ", "エンジニア"]
-date = "2023-06-18"
+date = "2023-06-19"
 description = "2023年2月に10Xに入社しました。ここではそのきっかけと4ヶ月経ってのリアルを話します。"
-featured = "2023-06-19.png"
-featuredpath = "/images"
-featuredalt = "10X"
 title = "10Xに入社した、そして4ヶ月後…"
 type = "post"
+cover.image = "/images/2023-06-19.png"
 
 +++
 
