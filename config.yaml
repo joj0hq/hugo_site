@@ -1,3 +1,4 @@
+# https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-features/
 baseURL: "https://joj0hq.com/"
 title: joj0hq.com
 paginate: 5
@@ -34,7 +35,7 @@ params:
     [
       "https://pbs.twimg.com/profile_images/1555020494113751040/2OFqgjR8_400x400.jpg",
     ]
-  DateFormat: "January 2, 2006"
+  DateFormat: "2006/01/02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
 
