@@ -3,3 +3,5 @@ init:
 deploy:
 	hugo
 	firebase deploy
+run:
+	hugo server -D
