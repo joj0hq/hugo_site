@@ -3,7 +3,6 @@ title: "【入門編】Reduxによる状態管理の仕組みを理解する"
 emoji: "🍖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["react", "redux", "js", "frontend", "初心者向け"]
-published: true
 date: "2021-03-21"
 categories: ["engineering"]
 tags: ["react", "redux", "js", "frontend", "初心者向け"]

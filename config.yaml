@@ -1,7 +1,8 @@
 # https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-features/
 baseURL: "https://joj0hq.com/"
 title: joj0hq.com
-paginate: 5
+pagination:
+  pagerSize: 10
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -54,6 +55,7 @@ params:
   hideSummary: false
   showtoc: true
   tocopen: false
+  social: true
 
   assets:
     # disableHLJS: true # to disable highlight.js

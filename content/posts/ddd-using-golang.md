@@ -4,7 +4,6 @@ description: "【DDD】Golangを使ってモデルでドメイン知識を表現
 emoji: "🍖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Go", "DDD", "ドメイン駆動設計", "アーキテクチャ", "初心者向け"]
-published: true
 date: "2021-12-05"
 categories: ["engineering"]
 tags: ["Go", "DDD", "ドメイン駆動設計", "アーキテクチャ", "初心者向け"]

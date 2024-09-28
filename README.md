@@ -6,7 +6,7 @@
 ## テンプレートテーマの追加
 
 ```sh
-git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1
+gh repo clone adityatelange/hugo-PaperMod themes/PaperMod
 ```
 
 参考: [PaperMod's wiki](https://github.com/adityatelange/hugo-PaperMod/wiki)
