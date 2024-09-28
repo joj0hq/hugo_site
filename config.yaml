@@ -2,7 +2,7 @@
 baseURL: "https://joj0hq.com/"
 title: joj0hq.com
 pagination:
-  pagerSize: 10
+  pagerSize: 5
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -18,7 +18,7 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: jojo
+  title: joj0hq.com
   description: "jojoが気ままにエンジニアリングや個人の考えを発信します。"
   keywords:
     [
@@ -103,11 +103,6 @@ params:
   #     SiteVerificationTag: "XYZabc"
   #   yandex:
   #     SiteVerificationTag: "XYZabc"
-
-  cover:
-    hidden: true # hide everywhere but not in structured data
-    hiddenInList: true # hide on list pages and home
-    hiddenInSingle: true # hide on single page
 
   # editPost:
   #   URL: "https://github.com/joj0hq/hugo_site/content"
