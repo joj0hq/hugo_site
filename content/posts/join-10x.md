@@ -6,15 +6,11 @@ description = "2023年2月に10Xに入社しました。ここではそのきっ
 title = "10Xに入社した、そして4ヶ月後…"
 type = "post"
 cover.image = "/images/2023-06-19.png"
-cover.alt = "2023年2月に10Xに入社しました。ここではそのきっかけと4ヶ月経ってのリアルを話します。"
-cover.caption = "2023年2月に10Xに入社しました。ここではそのきっかけと4ヶ月経ってのリアルを話します。"
 cover.linkFullImages = true
 cover.responsiveImages = true
 cover.relative = true
 
 +++
-
-![10Xに入社した、そして4ヶ月後…](/images/2023-06-19.png)
 
 この記事は[10X 創業 6 周年アドベントカレンダー](https://10xall.notion.site/10X-6-6-6-30-23ba40d94ad14700b46a661cd045e968)の 14 日目の記事になります。 昨日は BizDev の寺崎さんが、「[100 社以上の小売企業と面談して知った 5 つの発見](https://note.com/yuka_terasaki/n/ne59ee6afddbc)」という記事を公開していますのでぜひ読んでみてくださいね。
 
