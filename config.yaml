@@ -31,11 +31,8 @@ params:
       Portfolio,
       PaperMod,
     ]
-  # author: Me
-  images:
-    [
-      "https://pbs.twimg.com/profile_images/1555020494113751040/2OFqgjR8_400x400.jpg",
-    ]
+  author: joj0hq
+  images: ["https://joj0hq.com/images/profile.jpg"]
   DateFormat: "2006/01/02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -87,8 +84,8 @@ params:
     #     url: tags
 
   socialIcons:
-    - name: twitter
-      url: "https://twitter.com/joj0hq"
+    - name: x
+      url: "https://x.com/joj0hq"
     - name: github
       url: "https://github.com/joj0hq"
     - name: facebook
