@@ -9,6 +9,7 @@ enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
+mainsections: ["post"]
 
 googleAnalytics: G-5DHQZYY1H1
 
@@ -68,20 +69,23 @@ params:
     icon: /apple-touch-icon.png
     iconHeight: 35
 
-  # profile-mode
-  profileMode:
-    enabled: true # needs to be explicitly set
-    title: jojo
-    subtitle: "Software Engineer"
-    imageUrl: "/images/profile.jpg"
-    imageWidth: 120
-    imageHeight: 120
-    imageTitle: my image
-    # buttons:
-    #   - name: Posts
-    #     url: posts
-    #   - name: Tags
-    #     url: tags
+  homeInfoParams:
+    Title: jojo
+    Content: Software Engineer
+  # # profile-mode
+  # profileMode:
+  #   enabled: true # needs to be explicitly set
+  #   title: jojo
+  #   subtitle: "Software Engineer"
+  #   imageUrl: "/images/profile.jpg"
+  #   imageWidth: 120
+  #   imageHeight: 120
+  #   imageTitle: my image
+  #   # buttons:
+  #   #   - name: Posts
+  #   #     url: posts
+  #   #   - name: Tags
+  #   #     url: tags
 
   socialIcons:
     - name: x
