@@ -45,7 +45,7 @@ BiHint 事業部にて、会員数 30 万人を擁する「中小経営者向け
 
 # お手伝い
 
-- SWE in [Polyuse,inc](https://polyuse.xyz/)（2021~）
+- SWE in [Polyuse,inc](https://polyuse.xyz/)（2021~2024）
 
 # 個人開発
 
@@ -57,6 +57,7 @@ BiHint 事業部にて、会員数 30 万人を擁する「中小経営者向け
 
 - Golang: 3 年以上
 - React(TypeScript): 3 年以上
+- Dart / Flutter: 1年以上
 - SwiftUI: 1 年以上
 - GCP: 3 年以上
 - AWS: 5 年以上
@@ -69,6 +70,7 @@ BiHint 事業部にて、会員数 30 万人を擁する「中小経営者向け
 
 # 参考 URL
 
+- [【エンジニアの部屋第3回】お買い物チーム（toC向けプロダクト開発メイン）の話を聞いてみた with @jojo](https://www.youtube.com/watch?v=9G3-MKgBlhw)
 - [#78 プロダクトの本質的な課題解決にフォーカスしたい【ゲスト：湯座丞太郎さん(Software Engineer)のキャリア】|10X.fm](https://open.spotify.com/episode/1UFUq9Xugcgek7R2bbdAJN)
 - [エンジニアの枠を囚われないプロダクト開発 - 事業づくりに求められる「越境」をするには|Visonal Engineering Blog](https://engineering.visional.inc/blog/430/how_to_cross_borders_in_bizhint/)
 - [ゆざ、株式会社 PLAN を卒業します。|MIYABI LAB](https://miyabi-lab.space/blog/32)
