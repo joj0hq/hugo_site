@@ -1,5 +1,5 @@
 ---
-title: "Products"
+title: "プロダクト"
 date: 2025-11-30T19:38:44+11:00
 draft: false
 showtoc: false

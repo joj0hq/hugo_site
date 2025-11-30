@@ -5,6 +5,96 @@ pagination:
   pagerSize: 5
 theme: PaperMod
 
+# 多言語設定
+defaultContentLanguage: ja
+defaultContentLanguageInSubdir: false
+languages:
+  ja:
+    languageName: "日本語"
+    weight: 1
+    title: joj0hq.com
+    params:
+      description: "jojoが気ままにエンジニアリングや個人の考えを発信します。"
+      keywords:
+        [
+          Golang,
+          ドメイン駆動設計,
+          Dart,
+          エンジニア,
+          プロダクト開発,
+          Blog,
+          Portfolio,
+          PaperMod,
+        ]
+      homeInfoParams:
+        Title: jojo
+        Content: ソフトウェアエンジニア | 10X, Inc.
+    menu:
+      main:
+        - identifier: blog
+          name: ブログ
+          url: /posts
+          weight: 9
+        - identifier: product
+          name: プロダクト
+          url: /products
+          weight: 9
+        - identifier: about
+          name: 自己紹介
+          url: /about
+          weight: 100
+        - identifier: search
+          name: 検索
+          url: /search
+          weight: 200
+        - identifier: contacts
+          name: 問い合わせ
+          url: mailto:jotaro.yuza@gmail.com
+          weight: 1000
+  en:
+    languageName: "English"
+    weight: 2
+    contentDir: content/en
+    title: joj0hq.com
+    params:
+      description: "jojo's blog about engineering and thoughts."
+      keywords:
+        [
+          Golang,
+          DDD,
+          Dart,
+          Engineer,
+          Product Development,
+          Blog,
+          Portfolio,
+          PaperMod,
+        ]
+      homeInfoParams:
+        Title: jojo
+        Content: Software Engineer at 10X, Inc.
+    menu:
+      main:
+        - identifier: blog
+          name: Blog
+          url: /en/posts
+          weight: 9
+        - identifier: product
+          name: Products
+          url: /en/products
+          weight: 9
+        - identifier: about
+          name: About
+          url: /en/about
+          weight: 100
+        - identifier: search
+          name: Search
+          url: /en/search
+          weight: 200
+        - identifier: contacts
+          name: Contact
+          url: mailto:jotaro.yuza@gmail.com
+          weight: 1000
+
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
@@ -19,31 +109,16 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: joj0hq.com
-  description: "jojoが気ままにエンジニアリングや個人の考えを発信します。"
-  keywords:
-    [
-      Golang,
-      ドメイン駆動設計,
-      Dart,
-      エンジニア,
-      プロダクト開発,
-      Blog,
-      Portfolio,
-      PaperMod,
-    ]
   author: joj0hq
   images: ["https://joj0hq.com/images/profile.jpg"]
   DateFormat: "2006/01/02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
 
-  ShowReadingTime: true
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
-  ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
   disableSpecial1stPost: false
@@ -68,10 +143,6 @@ params:
     text: "joj0hq.com"
     icon: /apple-touch-icon.png
     iconHeight: 35
-
-  homeInfoParams:
-    Title: jojo
-    Content: Software Engineer
   # # profile-mode
   # profileMode:
   #   enabled: true # needs to be explicitly set
@@ -120,36 +191,6 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content", "post"]
-menu:
-  main:
-    - identifier: blog
-      name: blog
-      url: /posts
-      weight: 9
-    - identifier: product
-      name: product
-      url: /products
-      weight: 9
-    # - identifier: categories
-    #   name: categories
-    #   url: /categories/
-    #   weight: 10
-    # - identifier: tags
-    #   name: tags
-    #   url: /tags/
-    #   weight: 20
-    - identifier: about
-      name: about
-      url: /about
-      weight: 100
-    - identifier: search
-      name: search
-      url: /search
-      weight: 200
-    - identifier: contacts
-      name: contacts
-      url: mailto:jotaro.yuza@gmail.com
-      weight: 1000
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:

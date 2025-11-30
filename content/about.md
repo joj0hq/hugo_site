@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "自己紹介"
 date: 2025-11-30T19:38:11+11:00
 draft: false
 showtoc: false
