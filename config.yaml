@@ -159,14 +159,16 @@ params:
   #   #     url: tags
 
   socialIcons:
-    - name: x
-      url: "https://x.com/joj0hq"
-    - name: github
-      url: "https://github.com/joj0hq"
-    - name: facebook
-      url: "https://facebook.com/jotaro.yuza"
     - name: linkedin
       url: "https://www.linkedin.com/in/joj0hq/"
+    - name: github
+      url: "https://github.com/joj0hq"
+    - name: sizukanainternet
+      url: "https://sizu.me/joj0hq"
+    - name: x
+      url: "https://x.com/joj0hq"
+    - name: facebook
+      url: "https://facebook.com/jotaro.yuza"
 
   # analytics:
   #   google:
