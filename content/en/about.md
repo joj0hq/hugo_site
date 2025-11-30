@@ -54,8 +54,8 @@ Redesigned the architecture and Firestore schema to significantly reduce latency
 
 # Personal Development
 
-- SWE in [micce,inc](https://micce.super.site/)
-- SWE in [Pululu,inc](https://pululu.co.jp/)
+- SWE/Founder in [micce,inc](https://micce.super.site/)
+- SWE/Founder in [Pululu,inc](https://pululu.co.jp/)
 
 # Skills
 

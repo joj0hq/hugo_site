@@ -55,8 +55,8 @@ BiHint 事業部にて、会員数 30 万人を擁する「中小経営者向け
 
 # 個人開発
 
-- SWE in [micce,inc](https://micce.super.site/)
-- SWE in [Pululu,inc](https://pululu.co.jp/)
+- SWE/Founder in [micce,inc](https://micce.super.site/)
+- SWE/Founder in [Pululu,inc](https://pululu.co.jp/)
 
 # スキル
 
