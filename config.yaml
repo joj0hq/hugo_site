@@ -148,11 +148,14 @@ menu:
       weight: 200
     - identifier: contacts
       name: contacts
-      url: https://twitter.com/joj0hq
+      url: mailto:jotaro.yuza@gmail.com
       weight: 1000
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     noClasses: false
     # anchorLineNos: true
