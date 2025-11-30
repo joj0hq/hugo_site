@@ -110,7 +110,7 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   author: joj0hq
-  images: ["https://joj0hq.com/images/profile.jpg"]
+  images: ["https://joj0hq.com/images/logo.png"]
   DateFormat: "2006/01/02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -143,20 +143,6 @@ params:
     text: ""
     icon: /images/logo.png
     iconHeight: 40
-  # # profile-mode
-  # profileMode:
-  #   enabled: true # needs to be explicitly set
-  #   title: jojo
-  #   subtitle: "Software Engineer"
-  #   imageUrl: "/images/profile.jpg"
-  #   imageWidth: 120
-  #   imageHeight: 120
-  #   imageTitle: my image
-  #   # buttons:
-  #   #   - name: Posts
-  #   #     url: posts
-  #   #   - name: Tags
-  #   #     url: tags
 
   socialIcons:
     - name: linkedin
