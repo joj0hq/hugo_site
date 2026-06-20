@@ -60,8 +60,8 @@
 {{ $wcount := len $items }}
 <section class="section section-tight">
   <div class="stats" data-reveal>
-    <div class="stat"><div class="num">{{ $years }}<span class="plus">+</span></div><div class="label">{{ i18n "stat_years" }}</div></div>
-    <div class="stat"><div class="num">{{ $wcount }}<span class="plus">+</span></div><div class="label">{{ i18n "stat_writing" }}</div></div>
+    <div class="stat"><div class="num"><span class="n" data-count="{{ $years }}">{{ $years }}</span><span class="plus">+</span></div><div class="label">{{ i18n "stat_years" }}</div></div>
+    <div class="stat"><div class="num"><span class="n" data-count="{{ $wcount }}">{{ $wcount }}</span><span class="plus">+</span></div><div class="label">{{ i18n "stat_writing" }}</div></div>
   </div>
 </section>
 
