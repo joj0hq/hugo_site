@@ -581,3 +581,35 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 @media (prefers-reduced-motion: reduce) { .scroll-progress { transition: none; } }
+
+/* hero heading word reveal */
+.reveal-words .word { display: inline-block; animation: wordIn .65s cubic-bezier(.2,.7,.2,1) both; }
+.reveal-words .word:nth-child(1) { animation-delay: .05s; }
+.reveal-words .word:nth-child(2) { animation-delay: .15s; }
+.reveal-words .word:nth-child(3) { animation-delay: .25s; }
+@keyframes wordIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* copy toast */
+.toast { position: fixed; left: 50%; bottom: 32px; transform: translate(-50%, 16px); z-index: 300; background: var(--ink); color: #fff; font-family: var(--sans); font-size: 13px; padding: 10px 20px; border-radius: 999px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.4); opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* floating back-to-top */
+.to-top-float { position: fixed; right: 26px; bottom: 26px; z-index: 90; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 14px 30px -16px rgba(60,40,20,.4); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s, transform .25s, background .2s, color .2s; }
+.to-top-float.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.to-top-float:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+@media (max-width: 560px) { .to-top-float { right: 16px; bottom: 16px; } }
+
+/* loading skeletons (shimmer) */
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.gh-graph-img img { transition: opacity .4s; }
+.gh-graph-img.is-loading { position: relative; min-height: 120px; border-radius: 10px; overflow: hidden; background: var(--card-warm); }
+.gh-graph-img.is-loading img { opacity: 0; }
+.gh-graph-img.is-loading::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: shimmer 1.3s infinite; }
+.cs-rel-skel { display: none; }
+.cs-release.is-loading .cs-rel-head, .cs-release.is-loading .cs-rel-notes { display: none; }
+.cs-release.is-loading .cs-rel-skel { display: flex; flex-direction: column; gap: 10px; }
+.cs-rel-skel span { position: relative; overflow: hidden; height: 14px; border-radius: 6px; background: rgba(0,0,0,.05); }
+.cs-rel-skel span:nth-child(1) { width: 38%; }
+.cs-rel-skel span:nth-child(2) { width: 88%; }
+.cs-rel-skel span:nth-child(3) { width: 66%; }
+.cs-rel-skel span::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent); animation: shimmer 1.3s infinite; }

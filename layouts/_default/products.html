@@ -40,13 +40,14 @@
       {{ $rd := (try (time.AsTime .currentVersionReleaseDate)).Value }}{{ with $rd }}{{ $date = .Format "2006.01.02" }}{{ end }}
       {{ with .releaseNotes }}{{ $notes = (split (trim . " \n") "\n") }}{{ end }}
     {{ end }}{{ end }}{{ end }}
-    <div class="cs-release" data-appstore-id="{{ . }}" data-country="{{ $country }}">
+    <div class="cs-release{{ if not $ver }} is-loading{{ end }}" data-appstore-id="{{ . }}" data-country="{{ $country }}">
       <div class="cs-rel-head">
         <span class="cs-label" style="margin:0">{{ i18n "latest_release" }}</span>
         <span class="cs-ver" data-rel-ver>{{ with $ver }}v{{ . }}{{ end }}</span>
         <span class="cs-rel-date" data-rel-date>{{ $date }}</span>
       </div>
       <div class="cs-rel-notes" data-rel-notes>{{ range $notes }}{{ with (trim . " ") }}<div>{{ . }}</div>{{ end }}{{ end }}</div>
+      <div class="cs-rel-skel" aria-hidden="true"><span></span><span></span><span></span></div>
     </div>
     {{ end }}
 

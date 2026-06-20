@@ -9,10 +9,10 @@ other = "About"
 [nav_contact]
 other = "Contact"
 [nav_search]
-other = "検索"
+other = "Search"
 
 [section_product]
-other = "Product"
+other = "Projects"
 [section_featured]
 other = "Featured"
 [src_sizu]

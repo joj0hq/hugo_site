@@ -104,8 +104,17 @@
               notes.appendChild(div);
             });
           }
+          box.classList.remove("is-loading");
         })
-        .catch(function () {});
+        .catch(function () { box.classList.remove("is-loading"); });
+    });
+
+    // ---- image skeletons (reveal on load)
+    document.querySelectorAll("img[data-skel]").forEach(function (img) {
+      var wrap = img.parentNode;
+      var done = function () { if (wrap) wrap.classList.remove("is-loading"); };
+      if (img.complete && img.naturalWidth) done();
+      else { img.addEventListener("load", done); img.addEventListener("error", done); }
     });
 
     // ---- blog category filter
@@ -196,5 +205,38 @@
         nums.forEach(function (el) { el.textContent = "0"; io2.observe(el); });
       }
     }
+
+    // ---- floating back-to-top (appears on scroll)
+    var topFloat = document.querySelector("[data-top-float]");
+    if (topFloat) {
+      var toggleTop = function () {
+        var st = window.scrollY || document.documentElement.scrollTop || 0;
+        topFloat.classList.toggle("show", st > 420);
+      };
+      window.addEventListener("scroll", toggleTop, { passive: true });
+      toggleTop();
+    }
+
+    // ---- click-to-copy email (with toast)
+    function showToast(msg) {
+      var t = document.createElement("div");
+      t.className = "toast";
+      t.textContent = msg;
+      document.body.appendChild(t);
+      requestAnimationFrame(function () { t.classList.add("show"); });
+      setTimeout(function () { t.classList.remove("show"); }, 1800);
+      setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 2200);
+    }
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        if (!navigator.clipboard) return;
+        e.preventDefault();
+        var email = a.getAttribute("href").replace(/^mailto:/, "");
+        navigator.clipboard.writeText(email).then(function () {
+          var ja = (document.documentElement.lang || "ja").indexOf("ja") === 0;
+          showToast(ja ? "コピーしました ✓" : "Copied ✓");
+        }).catch(function () { window.location.href = a.getAttribute("href"); });
+      });
+    });
   });
 })();
