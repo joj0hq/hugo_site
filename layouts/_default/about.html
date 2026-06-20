@@ -1,0 +1,142 @@
+{{ define "main" }}
+<!-- HERO -->
+<section class="hero hero-single">
+  <div data-reveal>
+    <h1 class="xl">About<span class="accent">.</span></h1>
+  </div>
+</section>
+
+<!-- PROFILE -->
+{{ with .Params.profile }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_profile" }}</div>
+  <div class="profile" data-reveal>
+    <div class="meta">
+      <div class="row"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg></span><span class="k">{{ i18n "label_role" }}</span><span class="v">{{ .role }}</span></div>
+      <div class="row"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="k">{{ i18n "label_base" }}</span><span class="v">{{ .base }}</span></div>
+    </div>
+  </div>
+  {{ with $.Params.bio }}<p class="profile-bio" data-reveal>{{ . }}</p>{{ end }}
+</section>
+{{ end }}
+
+<!-- CAREER -->
+{{ with .Params.career }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_career" }}</div>
+  <div class="career" data-reveal>
+    {{ range . }}
+    <div class="career-row">
+      <div class="period">{{ .period }}</div>
+      <div class="rail"><span class="node"></span></div>
+      <div>
+        <div class="org">{{ .org }}</div>
+        {{ with .body }}<div class="cbody">{{ . }}</div>{{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<!-- CONTRACT -->
+{{ with .Params.contract }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_contract" }}</div>
+  <div class="creds" data-reveal>
+    {{ range . }}
+    <div class="cred-row">
+      <div class="cred-main">
+        {{ if .url }}<a class="cred-org" href="{{ .url }}" target="_blank" rel="noopener">{{ .org }}</a>{{ else }}<span class="cred-org">{{ .org }}</span>{{ end }}
+        {{ with .note }}<span class="cred-note">{{ . }}</span>{{ end }}
+        {{ with .role }}<span class="cred-role">{{ . }}</span>{{ end }}
+      </div>
+      {{ with .period }}<span class="cred-period">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<!-- PERSONAL -->
+{{ with .Params.personal }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_personal" }}</div>
+  <div class="creds" data-reveal>
+    {{ range . }}
+    <div class="cred-row">
+      <div class="cred-main">
+        {{ if .url }}<a class="cred-org" href="{{ .url }}" target="_blank" rel="noopener">{{ .org }}</a>{{ else }}<span class="cred-org">{{ .org }}</span>{{ end }}
+        {{ with .note }}<span class="cred-note">{{ . }}</span>{{ end }}
+        {{ with .role }}<span class="cred-role">{{ . }}</span>{{ end }}
+      </div>
+      {{ with .period }}<span class="cred-period">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<!-- SKILLS -->
+{{ with .Params.skills }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_skills" }}</div>
+  <div class="skills" data-reveal>
+    {{ range . }}<span class="skill">{{ .name }}<span class="yr">{{ .years }}</span></span>{{ end }}
+  </div>
+</section>
+{{ end }}
+
+<!-- GITHUB -->
+{{ $ghuser := "" }}{{ range site.Params.socialIcons }}{{ if eq .name "github" }}{{ $ghuser = (.url | replaceRE "https?://github.com/" "" | replaceRE "/$" "") }}{{ end }}{{ end }}
+{{ with $ghuser }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>GitHub</div>
+  <div class="gh-graph" data-reveal>
+    <div class="gh-graph-img"><img src="https://ghchart.rshah.org/FF6A2C/{{ . }}" alt="GitHub contributions for {{ . }}" loading="lazy" decoding="async"></div>
+    <a class="gh-link" href="https://github.com/{{ . }}" target="_blank" rel="noopener">@{{ . }}
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+</section>
+{{ end }}
+
+<!-- HOBBIES -->
+{{ with .Params.hobbies }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_hobbies" }}</div>
+  <div class="interests" data-reveal>
+    {{ range . }}
+    <div class="interest">
+      <div class="ic">
+        {{ if eq .icon "sauna" }}<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3c0 1.5-1 2-1 3.5S8 9 8 9M12 3c0 1.5-1 2-1 3.5S12 9 12 9M16 3c0 1.5-1 2-1 3.5S16 9 16 9"/><ellipse cx="12" cy="15" rx="8" ry="3.2"/><path d="M5 15c0 3 3.5 5 7 5s7-2 7-5"/></svg>
+        {{ else if eq .icon "plant" }}<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12C12 8 9 5.5 5 5.5 5 9.5 8 12 12 12z"/><path d="M12 12c0-3.2 2.6-5.8 6.2-5.8 0 3.6-2.8 5.8-6.2 5.8z"/><path d="M8 21h8"/></svg>
+        {{ else if eq .icon "walk" }}<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="1.6"/><path d="M11 8l3 2 1 4"/><path d="M11 8l-2 4 1 4-2 4"/><path d="M14 14l2 1"/></svg>
+        {{ else }}<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/></svg>{{ end }}
+      </div>
+      <div class="it">{{ .title }}</div>
+      <div class="ib">{{ .body }}</div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<!-- REFERENCES -->
+{{ with .Params.references }}
+<section class="section section-tight" style="padding-bottom:72px">
+  <div class="h-section" data-reveal>{{ i18n "section_references" }}</div>
+  <ul class="refs" data-reveal>
+    {{ range . }}
+    <li>
+      <a class="ref-row" href="{{ .url }}" target="_blank" rel="noopener">
+        <span class="ref-title">{{ .title }}</span>
+        {{ with .source }}<span class="ref-source">{{ . }}</span>{{ end }}
+        <span class="ref-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}
+{{ end }}

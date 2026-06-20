@@ -1,0 +1,39 @@
+{{ define "main" }}
+<article>
+  <header class="article-head" data-reveal>
+    <h1>{{ .Title }}</h1>
+    <div class="article-meta">
+      <span>{{ .Date.Format (site.Params.DateFormat | default "2006.01.02") }}</span>
+      {{ if .ReadingTime }}<span>&middot;</span><span>{{ .ReadingTime }} min</span>{{ end }}
+      {{ with .Params.categories }}<span>&middot;</span>{{ range . }}<a href="{{ (printf "/categories/%s" (. | urlize)) | relLangURL }}" style="color:var(--accent);text-decoration:none">{{ . }}</a> {{ end }}{{ end }}
+    </div>
+  </header>
+
+  {{ with .Params.cover.image }}
+  <div class="article-cover" data-reveal>
+    <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy" decoding="async">
+  </div>
+  {{ end }}
+
+  <div class="section" style="padding-top:34px">
+    <div class="content prose" data-reveal>
+      {{ .Content }}
+    </div>
+  </div>
+
+  {{ with .Params.tags }}
+  <div class="prose" data-reveal>
+    <div class="post-tags">
+      {{ range . }}<a href="{{ (printf "/tags/%s" (. | urlize)) | relLangURL }}">#{{ . }}</a>{{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  <div class="prose" data-reveal style="margin-top:40px">
+    <div class="post-nav">
+      <div>{{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><span class="pn-label">&larr; {{ i18n "read_more" }}</span>{{ .Title }}</a>{{ end }}</div>
+      <div style="text-align:right">{{ with .NextInSection }}<a href="{{ .RelPermalink }}"><span class="pn-label">{{ i18n "read_more" }} &rarr;</span>{{ .Title }}</a>{{ end }}</div>
+    </div>
+  </div>
+</article>
+{{ end }}

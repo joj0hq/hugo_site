@@ -1,0 +1,60 @@
+{{- $rel := .RelPermalink -}}
+{{- $items := slice (dict "slug" "products" "key" "nav_work") (dict "slug" "posts" "key" "nav_writing") (dict "slug" "about" "key" "nav_about") (dict "slug" "contact" "key" "nav_contact") -}}
+{{- $searchURL := "search" | relLangURL -}}
+
+{{- /* language map for current page */ -}}
+{{- $cur := . -}}
+{{- $tmap := dict -}}
+{{- range .AllTranslations -}}
+  {{- $tmap = merge $tmap (dict .Language.Lang .RelPermalink) -}}
+{{- end -}}
+
+<div class="nav-shell">
+  <nav class="nav wrap">
+    <a class="brand" href="{{ site.Home.RelPermalink }}">jojo<span class="accent">.</span></a>
+
+    <div class="nav-right">
+      <div class="nav-links">
+        {{- range $items }}
+        {{- $base := .slug | relLangURL -}}
+        {{- $active := hasPrefix $rel $base -}}
+        <a class="nav-link{{ if $active }} is-active{{ end }}" href="{{ $base }}">{{ i18n .key }}</a>
+        {{- end }}
+      </div>
+
+      <a class="nav-icon" href="{{ $searchURL }}" aria-label="{{ i18n "nav_search" }}" title="{{ i18n "nav_search" }}">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </a>
+
+      <div class="nav-lang desktop">
+        {{- range $i, $s := .Sites -}}
+        {{- $code := $s.Language.Lang -}}
+        {{- $url := index $tmap $code | default $s.Home.RelPermalink -}}
+        {{- if $i }}<span class="sep">/</span>{{ end -}}
+        <a href="{{ $url }}" class="{{ if eq $code $cur.Language.Lang }}is-active{{ end }}">{{ if eq $code "ja" }}JP{{ else }}{{ upper $code }}{{ end }}</a>
+        {{- end -}}
+      </div>
+
+      <button class="nav-toggle" data-nav-toggle aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+
+      <div class="mobile-menu" data-mobile-menu>
+        {{- range $items }}
+        {{- $base := .slug | relLangURL -}}
+        {{- $active := hasPrefix $rel $base -}}
+        <a class="nav-link{{ if $active }} is-active{{ end }}" href="{{ $base }}">{{ i18n .key }}</a>
+        {{- end }}
+        <a class="nav-link" href="{{ $searchURL }}">{{ i18n "nav_search" }}</a>
+        <div class="nav-lang">
+          {{- range $i, $s := .Sites -}}
+          {{- $code := $s.Language.Lang -}}
+          {{- $url := index $tmap $code | default $s.Home.RelPermalink -}}
+          {{- if $i }}<span class="sep">/</span>{{ end -}}
+          <a href="{{ $url }}" class="{{ if eq $code $cur.Language.Lang }}is-active{{ end }}">{{ if eq $code "ja" }}JP{{ else }}{{ upper $code }}{{ end }}</a>
+          {{- end -}}
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

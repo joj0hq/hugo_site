@@ -6,7 +6,7 @@ description = "This time, we'll create a static site using Firebase and Hugo for
 linktitle = ""
 title = "[Implement in 10 minutes!] Create a Static Website with Hugo and Firebase"
 type = "post"
-cover.image = "/images/2019/11/2019-11-10.png"
+cover.image = "/images/2019/11/2019-11-10.webp"
 
 +++
 

@@ -1,0 +1,89 @@
+# UI chrome strings (English)
+
+[nav_work]
+other = "Work"
+[nav_writing]
+other = "Writing"
+[nav_about]
+other = "About"
+[nav_contact]
+other = "Contact"
+[nav_search]
+other = "Search"
+
+[section_product]
+other = "Product"
+[section_timeline]
+other = "Timeline"
+[stat_years]
+other = "Years of experience"
+[stat_products]
+other = "Products"
+[stat_writing]
+other = "Articles"
+[section_blog]
+other = "Blog"
+[section_projects]
+other = "Projects"
+[section_profile]
+other = "Profile"
+[section_career]
+other = "Career"
+[section_values]
+other = "Values"
+[section_life]
+other = "Life / Interests"
+[section_contract]
+other = "Contract"
+[section_personal]
+other = "Personal Development"
+[section_skills]
+other = "Skills"
+[section_hobbies]
+other = "Life / Interests"
+[section_references]
+other = "Featured"
+
+[label_role]
+other = "Role"
+[label_base]
+other = "Base"
+[label_values]
+other = "Values"
+
+[case_study]
+other = "See more"
+[cs_built]
+other = "What I built"
+[cs_press]
+other = "Press"
+[status_ended]
+other = "Discontinued"
+[latest_release]
+other = "Latest release"
+[read_more]
+other = "Read more"
+[more_on]
+other = "More on"
+[view_all_posts]
+other = "View all posts"
+[filter_all]
+other = "All"
+
+[get_in_touch]
+other = "Get in touch"
+[open_to_conversation]
+other = "Open to conversation"
+
+[back_to_top]
+other = "Back to top"
+
+[footer_contact]
+other = "Contact"
+
+[lang_switch]
+other = "Language"
+[nf_msg]
+other = "The page you're looking for couldn't be found."
+[nf_home]
+other = "Back home"

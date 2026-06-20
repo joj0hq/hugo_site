@@ -1,184 +1,115 @@
-{{- define "main" }}
+{{ define "main" }}
+{{- /* Build a unified writing timeline: internal posts + Zenn + しずかなインターネット */ -}}
+{{- $items := slice -}}
+{{- $seen := slice -}}
+{{- /* External feeds first so cross-posted articles surface with their platform label */ -}}
+{{- $feeds := slice (dict "url" "https://zenn.dev/jojo/feed" "source" "Zenn") (dict "url" "https://sizu.me/joj0hq/rss" "source" "しずかなインターネット") -}}
+{{- range $feeds -}}
+  {{- $src := .source -}}
+  {{- $t := try (resources.GetRemote .url) -}}
+  {{- with $t.Value -}}
+    {{- $p := try (transform.Unmarshal .) -}}
+    {{- with $p.Value -}}
+      {{- range (.channel.item | default slice) -}}
+        {{- $dt := (try (time.AsTime .pubDate)).Value -}}
+        {{- if and $dt (not (in $seen (lower .title))) -}}
+          {{- $items = $items | append (dict "title" .title "url" .link "date" $dt "source" $src "external" true) -}}
+          {{- $seen = $seen | append (lower .title) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- range (where .Site.RegularPages "Section" "posts").ByDate.Reverse -}}
+  {{- if not (in $seen (lower .Title)) -}}
+    {{- $items = $items | append (dict "title" .Title "url" .RelPermalink "date" .Date "source" (i18n "section_blog") "external" false) -}}
+    {{- $seen = $seen | append (lower .Title) -}}
+  {{- end -}}
+{{- end -}}
+{{- $posts := first 30 (sort $items "date" "desc") -}}
+{{- $gh := "" }}{{ $li := "" }}{{ $sizu := "" }}{{ $zenn := "" -}}
+{{- range site.Params.socialIcons -}}
+  {{- if eq .name "github" }}{{ $gh = .url }}{{ end -}}
+  {{- if eq .name "linkedin" }}{{ $li = .url }}{{ end -}}
+  {{- if eq .name "sizukanainternet" }}{{ $sizu = .url }}{{ end -}}
+  {{- if eq .name "zenn" }}{{ $zenn = .url }}{{ end -}}
+{{- end -}}
 
-{{- if (and site.Params.profileMode.enabled .IsHome) }}
-{{- partial "index_profile.html" . }}
-{{- else }} {{/* if not profileMode */}}
-
-{{- if not .IsHome | and .Title }}
-<header class="page-header">
-  {{- partial "breadcrumbs.html" . }}
-  <h1>
-    {{ .Title }}
-    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
-    {{- with .OutputFormats.Get "rss" }}
-    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" height="23">
-        <path d="M4 11a9 9 0 0 1 9 9" />
-        <path d="M4 4a16 16 0 0 1 16 16" />
-        <circle cx="5" cy="19" r="1" />
-      </svg>
-    </a>
-    {{- end }}
-    {{- end }}
-  </h1>
-  {{- if .Description }}
-  <div class="post-description">
-    {{ .Description | markdownify }}
+<!-- HERO -->
+<section class="hero">
+  <div data-reveal>
+    <h1>Shape What&rsquo;s Next<span class="accent">.</span></h1>
+    <div class="hero-id">
+      <div class="hero-meta"><span class="hero-name">Jotaro Yuza</span><span class="hero-dot">·</span><span class="hero-role">Software Engineer</span></div>
+      <div class="hero-socials">
+        {{- with $gh }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.1 6.8-9.6C22 6.6 17.5 2 12 2z"/></svg></a>{{ end -}}
+        {{- with $li }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0zM3.3 8.5h3.3V21H3.3V8.5zm5.3 0h3.16v1.7h.05c.44-.83 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5v6.5h-3.3v-5.8c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.9H8.6V8.5z"/></svg></a>{{ end -}}
+        {{- with $sizu }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="しずかなインターネット" title="しずかなインターネット"><img src="{{ "images/icon-sizu.png" | relURL }}" alt="" loading="lazy"></a>{{ end -}}
+        {{- with $zenn }}<a href="{{ . }}" target="_blank" rel="noopener" aria-label="Zenn" title="Zenn"><img src="{{ "images/icon-zenn.png" | relURL }}" alt="" loading="lazy"></a>{{ end -}}
+      </div>
+    </div>
   </div>
-  {{- end }}
-</header>
-{{- end }}
-
-{{- if .Content }}
-<div class="post-content">
-  {{- if not (.Param "disableAnchoredHeadings") }}
-  {{- partial "anchored_headings.html" .Content -}}
-  {{- else }}{{ .Content }}{{ end }}
-</div>
-{{- end }}
-
-{{- $pages := union .RegularPages .Sections }}
-
-{{- if .IsHome }}
-{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
-{{- $pages = $pages | first 1 }}
-{{- end }}
-
-{{- if .IsHome }}
-{{- if site.Params.homeInfoParams }}
-{{- partial "home_info.html" . }}
-{{- end }}
-
-{{- if gt (len $pages) 0 }}
-<header class="page-header" style="margin-top: 3rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
-  {{- if eq site.Language.Lang "ja" }}
-  <h2 style="font-size: 1.5rem; font-weight: 600; margin: 0;">最新のブログ</h2>
-  <a href="/posts" style="color: inherit; text-decoration: none; border: 1px solid currentColor; padding: 0.5em 1em; border-radius: 4px; transition: opacity 0.2s;">もっと見る</a>
-  {{- else }}
-  <h2 style="font-size: 1.5rem; font-weight: 600; margin: 0;">Latest Blog</h2>
-  <a href="/en/posts" style="color: inherit; text-decoration: none; border: 1px solid currentColor; padding: 0.5em 1em; border-radius: 4px; transition: opacity 0.2s;">View More</a>
-  {{- end }}
-</header>
-{{- end }}
-
-{{- $term := .Data.Term }}
-{{- range $index, $page := $pages }}
-
-{{- $class := "post-entry" }}
-
-{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
-{{- if (and $.IsHome (eq $index 0) (not $user_preferred)) }}
-{{- $class = "first-entry" }}
-{{- else if $term }}
-{{- $class = "post-entry tag-entry" }}
-{{- end }}
-
-<article class="{{ $class }}">
-  {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
-  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-      {{- .Title }}
-      {{- if .Draft }}
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-      {{- end }}
-    </h2>
-  </header>
-  {{- if (ne (.Param "hideSummary") true) }}
-  <div class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  <div class="hero-art-clean" data-reveal>
+    <img src="{{ "images/hero-jojo.webp" | relURL }}" alt="" class="floaty" width="1024" height="1024" fetchpriority="high" decoding="async">
   </div>
-  {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
-  {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-</article>
-{{- end }}
+</section>
 
-{{- else }}
-{{- $paginator := .Paginate $pages }}
-
-{{- if and site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
-{{- partial "home_info.html" . }}
-{{- end }}
-
-{{- $term := .Data.Term }}
-{{- range $index, $page := $paginator.Pages }}
-
-{{- $class := "post-entry" }}
-
-{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
-{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
-{{- $class = "first-entry" }}
-{{- else if $term }}
-{{- $class = "post-entry tag-entry" }}
-{{- end }}
-
-<article class="{{ $class }}">
-  {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
-  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-      {{- .Title }}
-      {{- if .Draft }}
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
-      {{- end }}
-    </h2>
-  </header>
-  {{- if (ne (.Param "hideSummary") true) }}
-  <div class="entry-content">
-    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+<!-- STATS -->
+{{ $years := sub now.Year (.Params.statsSince | default 2018) }}
+{{ $wcount := len $items }}
+<section class="section section-tight">
+  <div class="stats" data-reveal>
+    <div class="stat"><div class="num">{{ $years }}<span class="plus">+</span></div><div class="label">{{ i18n "stat_years" }}</div></div>
+    <div class="stat"><div class="num">{{ $wcount }}<span class="plus">+</span></div><div class="label">{{ i18n "stat_writing" }}</div></div>
   </div>
-  {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
-  {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-</article>
-{{- end }}
+</section>
 
-{{- if gt $paginator.TotalPages 1 }}
-<footer class="page-footer">
-  <nav class="pagination">
-    {{- if $paginator.HasPrev }}
-    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-      «&nbsp;{{ i18n "prev_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
-      {{- end }}
-    </a>
-    {{- end }}
-    {{- if $paginator.HasNext }}
-    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-      {{- i18n "next_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
-      {{- end }}&nbsp;»
-    </a>
-    {{- end }}
-  </nav>
-</footer>
-{{- end }}
-{{- end }}
+<!-- PRODUCT -->
+{{ with .Params.pululu }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_product" }}</div>
+  <div class="product-card" data-reveal>
+    <div>
+      <div class="wordmark"><img src="{{ "images/pululu-icon.png" | relURL }}" alt=""><span>Pululu</span></div>
+      <p class="tagline">{{ .tagline }}</p>
+      <p class="desc">{{ .desc }}</p>
+      <div class="tags">
+        {{ range .tags }}<span class="tag">{{ . }}</span>{{ end }}
+      </div>
+      <div style="margin-top:18px">
+        <a class="link-arrow" href="{{ "products" | relLangURL }}">{{ i18n "case_study" }}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="product-art">
+      <div class="glow"></div>
+      <div class="phone-img floaty"><img src="{{ "images/pululu-mockup.webp" | relURL }}" alt="Pululu app" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+{{ end }}
 
-{{- end }}{{/* end profileMode */}}
-
-{{- end }}{{- /* end main */ -}}
-
+<!-- TIMELINE -->
+{{ if $posts }}
+<section class="section">
+  <div class="h-section" data-reveal>{{ i18n "section_timeline" }}<span class="sub">{{ i18n "section_blog" }}</span></div>
+  <div class="tl" data-reveal>
+    {{ range $posts }}
+      {{ $sc := cond (eq .source "Zenn") "zenn" (cond (eq .source "Blog") "blog" "sizu") }}
+      <a class="tl-row src-{{ $sc }}" href="{{ .url }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>
+        <span class="tl-date">{{ .date.Format "2006.01.02" }}</span>
+        <span class="tl-rail"><span class="tl-node"></span></span>
+        <span class="tl-title">{{ .title }}<span class="tl-src">{{ .source }}</span></span>
+      </a>
+    {{ end }}
+  </div>
+  <div class="tl-more-links" data-reveal>
+    <span class="tl-more-label">{{ i18n "more_on" }}</span>
+    <a class="tl-srclink src-blog" href="{{ "posts" | relLangURL }}">{{ i18n "section_blog" }}</a>
+    {{ with $zenn }}<a class="tl-srclink src-zenn" href="{{ . }}" target="_blank" rel="noopener">Zenn</a>{{ end }}
+    {{ with $sizu }}<a class="tl-srclink src-sizu" href="{{ . }}" target="_blank" rel="noopener">しずかなインターネット</a>{{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

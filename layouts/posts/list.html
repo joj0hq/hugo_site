@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{- $posts := .Pages.ByDate.Reverse -}}
+{{- if not $posts }}{{ $posts = (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}{{ end -}}
+{{- $cats := slice -}}
+{{- range $posts }}{{ range .Params.categories }}{{ $cats = $cats | append . }}{{ end }}{{ end -}}
+{{- $cats = $cats | uniq | sort -}}
+
+<!-- HERO -->
+<section class="hero hero-single">
+  <div data-reveal>
+    <h1>Writing<span class="accent">.</span></h1>
+    {{ with .Content }}<div class="hero-lead">{{ . }}</div>{{ end }}
+  </div>
+</section>
+
+<!-- FILTER -->
+<section class="section section-tight" style="padding-bottom:8px">
+  <div class="filterbar" data-reveal>
+    <button class="chip is-active" data-filter="*">{{ i18n "filter_all" }}</button>
+    {{ range $cats }}<button class="chip" data-filter="{{ . }}">{{ . }}</button>{{ end }}
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" style="padding-top:18px">
+  <div data-reveal>
+    {{ range $posts }}
+    {{ $cover := "" }}{{ with .Params.cover }}{{ $cover = .image }}{{ end }}
+    {{ $cat := "" }}{{ with .Params.categories }}{{ $cat = index . 0 }}{{ end }}
+    <a class="timeline-row has-thumb" href="{{ .RelPermalink }}" data-cats="{{ delimit .Params.categories "|" }}">
+      <div class="date">{{ .Date.Format "2006.01.02" }}</div>
+      <div class="rail"><span class="node"></span></div>
+      <div>
+        <div class="titleline">
+          <span class="ttl">{{ .Title }}</span>
+          {{ with $cat }}<span class="tag cat-{{ lower . }}">{{ . }}</span>{{ end }}
+        </div>
+        {{ with .Description }}<div class="pdesc">{{ . }}</div>{{ end }}
+      </div>
+      <div class="thumb">
+        {{ with $cover }}<img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">{{ else }}<span class="thumb-ph cat-{{ lower $cat }}"></span>{{ end }}
+      </div>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

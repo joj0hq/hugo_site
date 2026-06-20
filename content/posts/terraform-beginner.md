@@ -6,7 +6,7 @@ description = ""
 linktitle = ""
 title = "【AWS入門】terraformでVPC+EC2構築を自動化する"
 type = "post"
-cover.image = "/images/2019/07/terraform-beginner.png"
+cover.image = "/images/2019/07/terraform-beginner.webp"
 
 +++
 

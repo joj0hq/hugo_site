@@ -110,10 +110,10 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   author: joj0hq
-  images: ["https://joj0hq.com/images/logo.png"]
+  images: ["https://joj0hq.com/images/og-default.png"]
   DateFormat: "2006/01/02"
-  defaultTheme: auto # dark, light
-  disableThemeToggle: false
+  defaultTheme: light # dark, light, auto
+  disableThemeToggle: true
 
   ShowShareButtons: true
   ShowPostNavLinks: true
@@ -151,6 +151,8 @@ params:
       url: "https://github.com/joj0hq"
     - name: sizukanainternet
       url: "https://sizu.me/joj0hq"
+    - name: zenn
+      url: "https://zenn.dev/jojo"
     - name: x
       url: "https://x.com/joj0hq"
     - name: facebook

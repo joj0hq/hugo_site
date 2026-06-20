@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+ <style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  ::selection{background:#ffd9c6;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @keyframes ru{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){[data-reveal]{animation:none!important;opacity:1!important;transform:none!important;}}
+  ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:#e6ddd6;border-radius:10px}::-webkit-scrollbar-track{background:transparent}
+ </style>
+ <script>setTimeout(function(){try{document.querySelectorAll('[data-reveal]').forEach(function(el){if(getComputedStyle(el).opacity!=='1'){el.style.animation='none';el.style.opacity='1';el.style.transform='none';}});}catch(e){}},1100);</script>
+</helmet>
+<div style="background:#FAF7F5;min-height:100vh;color:#1a1a1a;font-family:'Inter','Noto Sans JP',sans-serif;overflow-x:hidden;">
+
+  <div style="position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(250,247,245,0.72);border-bottom:1px solid rgba(0,0,0,0.04);">
+    {{ navBar }}
+  </div>
+
+  <main>
+
+    <!-- ================= HOME ================= -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1140px;margin:0 auto;padding:70px 40px 36px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:36px;align-items:center;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <h1 style="font-family:'Newsreader','Noto Serif JP',serif;font-weight:500;font-size:clamp(40px,4.4vw,60px);line-height:1.06;letter-spacing:-1.2px;margin:0 0 28px;">Shape What&rsquo;s Next<span style="color:#FF6A2C;">.</span></h1>
+          <p style="font-family:'Noto Serif JP','Newsreader',serif;font-size:19px;line-height:1.95;color:#3c3733;margin:0 0 12px;max-width:31ch;">{{ t.heroLead }}</p>
+          <sc-if value="{{ isJp }}" hint-placeholder-val="{{ true }}"><p style="font-family:'Inter',sans-serif;font-size:13.5px;color:#b1a79f;margin:0;letter-spacing:.3px;">Building meaningful products with code and curiosity.</p></sc-if>
+        </div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;justify-self:end;width:100%;max-width:480px;overflow:hidden;">
+          <img src="uploads/illust-hero.png" alt="" style="width:100%;display:block;margin-bottom:-11.5%;mix-blend-mode:multiply;animation:float 8s ease-in-out infinite;">
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:46px 40px 0;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;font-family:'Newsreader','Noto Serif JP',serif;font-size:30px;font-weight:500;margin-bottom:24px;">Product</div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;background:#FBF8F6;border:1px solid #f0e9e3;border-radius:22px;padding:52px;display:grid;grid-template-columns:1fr 0.72fr;gap:28px;align-items:center;box-shadow:0 30px 60px -50px rgba(60,40,20,0.4);">
+          <div>
+            <div style="height:36px;overflow:hidden;margin-bottom:26px;"><img src="uploads/logo-pululu-wordmark.png" alt="Pululu" style="height:36px;display:block;margin-left:-7px;mix-blend-mode:multiply;"></div>
+            <p style="font-family:'Noto Serif JP','Newsreader',serif;font-size:23px;font-weight:500;color:#1a1a1a;margin:0 0 18px;letter-spacing:.2px;">{{ t.pululuTagline }}</p>
+            <p style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14.5px;line-height:2;color:#7d746d;margin:0 0 24px;max-width:42ch;">{{ t.pululuDesc }}</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;">
+              <span style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:12.5px;padding:6px 15px;border-radius:999px;background:#E6F0DD;color:#5d7d49;">{{ t.tag1 }}</span>
+              <span style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:12.5px;padding:6px 15px;border-radius:999px;background:#E6F0DD;color:#5d7d49;">{{ t.tag2 }}</span>
+              <span style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:12.5px;padding:6px 15px;border-radius:999px;background:#E6F0DD;color:#5d7d49;">{{ t.tag3 }}</span>
+            </div>
+            <button onClick="{{ goWork }}" style="display:inline-flex;align-items:center;gap:9px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:#FF6A2C;padding:0;transition:gap .25s;" style-hover="gap:15px;">Case study<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <div style="position:relative;justify-self:end;">
+            <div style="position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(253,156,108,0.18),rgba(253,156,108,0));top:30px;left:-30px;"></div>
+            <div style="position:relative;width:218px;aspect-ratio:179/307;overflow:hidden;border-radius:30px;filter:drop-shadow(0 24px 40px rgba(40,30,20,0.22));animation:float 9s ease-in-out infinite;"><img src="uploads/illust-pululu-mockup.png" alt="Pululu app" style="width:100%;display:block;"></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:56px 40px 70px;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;display:flex;align-items:baseline;gap:12px;margin-bottom:18px;"><span style="font-family:'Newsreader','Noto Serif JP',serif;font-size:30px;font-weight:500;">Timeline</span><span style="font-family:'Inter',sans-serif;font-size:14px;color:#b1a79f;">Blog</span></div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <sc-for list="{{ homePosts }}" as="p" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:96px 30px 1fr;gap:12px;align-items:center;padding:18px 0;border-bottom:1px solid #efe7e2;cursor:pointer;transition:padding-left .25s;" style-hover="padding-left:8px;" onClick="{{ goWriting }}">
+              <div style="font-family:'Inter',sans-serif;font-size:14px;color:#b3a9a2;letter-spacing:.5px;">{{ p.date }}</div>
+              <div style="position:relative;height:100%;display:flex;justify-content:center;align-items:center;"><div style="position:absolute;top:-18px;bottom:-18px;width:1.5px;background:#f3d6c6;"></div><div style="width:10px;height:10px;border-radius:50%;border:1.6px solid #FF6A2C;background:#FAF7F5;position:relative;z-index:1;"></div></div>
+              <div style="font-family:'Noto Serif JP','Newsreader',serif;font-size:17.5px;color:#2a2622;font-weight:500;">{{ p.title }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= WORK ================= -->
+    <sc-if value="{{ isWork }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1140px;margin:0 auto;padding:60px 40px 34px;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;font-family:'Newsreader','Noto Serif JP',serif;font-size:30px;font-weight:500;margin-bottom:24px;">Projects</div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+          <div style="background:#fff;border:1.5px solid #FF6A2C;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:16px;cursor:pointer;position:relative;transition:transform .25s,box-shadow .25s;" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(60,40,20,0.35);">
+            <div style="position:absolute;top:18px;right:20px;width:8px;height:8px;border-radius:50%;background:#FF6A2C;"></div>
+            <div style="display:flex;align-items:center;gap:11px;"><div style="height:26px;overflow:hidden;"><img src="uploads/logo-pululu-wordmark.png" alt="" style="height:26px;display:block;margin-left:-6px;mix-blend-mode:multiply;"></div><span style="font-family:'Inter',sans-serif;font-size:16px;font-weight:600;">Pululu</span></div>
+            <div style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:13px;color:#9a908a;line-height:1.6;">Real-time translation for connection.</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="align-self:flex-end;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div style="background:#fff;border:1px solid #ece5e0;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:16px;cursor:pointer;transition:transform .25s,box-shadow .25s;" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(60,40,20,0.3);">
+            <div style="display:flex;align-items:center;gap:11px;"><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:24px;letter-spacing:-1px;">10<span style="color:#FF6A2C;">X</span></span></div>
+            <div style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:13px;color:#9a908a;line-height:1.6;">Business innovation platform.</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bdb4ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="align-self:flex-end;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <div style="background:#fff;border:1px solid #ece5e0;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:16px;cursor:pointer;transition:transform .25s,box-shadow .25s;" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(60,40,20,0.3);">
+            <div style="display:flex;align-items:center;gap:11px;"><span style="font-family:'Inter',sans-serif;font-weight:600;font-size:18px;letter-spacing:-.3px;">triple<span style="color:#bdb4ad;">/</span>micce</span></div>
+            <div style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:13px;color:#9a908a;line-height:1.6;">Creator economy platform.</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bdb4ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="align-self:flex-end;"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+        </div>
+      </section>
+
+      <div style="max-width:1140px;margin:0 auto;padding:0 40px;"><div style="border-top:1px solid #ece2dc;"></div></div>
+
+      <section style="max-width:1140px;margin:0 auto;padding:50px 40px 0;">
+        <div style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:30px;align-items:center;">
+          <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+            <div style="height:36px;overflow:hidden;margin-bottom:18px;"><img src="uploads/logo-pululu-wordmark.png" alt="Pululu" style="height:36px;display:block;margin-left:-7px;mix-blend-mode:multiply;"></div>
+            <h1 style="font-family:'Newsreader','Noto Serif JP',serif;font-weight:500;font-size:clamp(52px,6vw,76px);line-height:1;letter-spacing:-1.5px;margin:0 0 16px;">Pululu</h1>
+            <p style="font-family:'Newsreader','Noto Serif JP',serif;font-size:24px;color:#2a2622;margin:0 0 22px;">Real-time translation for connection<span style="color:#FF6A2C;">.</span></p>
+            <p style="font-family:'Noto Serif JP','Newsreader',serif;font-size:16.5px;line-height:2;color:#5c544e;margin:0 0 24px;max-width:40ch;">{{ t.pululuLead }}</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <span style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:12.5px;padding:6px 15px;border-radius:999px;background:#E6F0DD;color:#5d7d49;">{{ t.tag1 }}</span>
+              <span style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:12.5px;padding:6px 15px;border-radius:999px;background:#E6F0DD;color:#5d7d49;">{{ t.tag2en }}</span>
+              <span style="font-family:'Inter','Noto Sans JP',sans-serif;font-size:12.5px;padding:6px 15px;border-radius:999px;background:#E6F0DD;color:#5d7d49;">{{ t.tag3en }}</span>
+            </div>
+          </div>
+          <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;position:relative;justify-self:end;">
+            <div style="position:absolute;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(253,156,108,0.2),rgba(253,156,108,0));top:-10px;left:-40px;"></div>
+            <div style="position:absolute;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(199,178,165,0.28),rgba(199,178,165,0));bottom:20px;right:-30px;"></div>
+            <div style="position:relative;width:258px;aspect-ratio:179/307;overflow:hidden;border-radius:34px;filter:drop-shadow(0 28px 48px rgba(40,30,20,0.25));animation:float 9s ease-in-out infinite;"><img src="uploads/illust-pululu-mockup.png" alt="Pululu app" style="width:100%;display:block;"></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:50px 40px 0;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <div style="font-family:'Newsreader','Noto Serif JP',serif;font-size:23px;font-weight:500;margin-bottom:14px;">Overview</div>
+          <p style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14.5px;line-height:2.05;color:#6f665f;margin:0;max-width:62ch;">{{ t.overviewBody }}</p>
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:44px 40px 0;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;display:grid;grid-template-columns:repeat(3,1fr);gap:42px;border-top:1px solid #ece2dc;padding-top:40px;">
+          <div>
+            <div style="font-family:'Newsreader',serif;font-size:20px;font-weight:500;margin-bottom:18px;">Role</div>
+            <div style="display:flex;flex-direction:column;gap:13px;">
+              <div style="display:flex;align-items:center;gap:11px;font-family:'Inter',sans-serif;font-size:14px;color:#564f49;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0"/></svg>Product Design</div>
+              <div style="display:flex;align-items:center;gap:11px;font-family:'Inter',sans-serif;font-size:14px;color:#564f49;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>UI/UX Design</div>
+              <div style="display:flex;align-items:center;gap:11px;font-family:'Inter',sans-serif;font-size:14px;color:#564f49;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7M17.5 14v7"/></svg>Prototyping</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Newsreader',serif;font-size:20px;font-weight:500;margin-bottom:18px;">What I Built</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;gap:11px;font-family:'Noto Sans JP','Inter',sans-serif;font-size:13.5px;color:#564f49;line-height:1.55;"><span style="color:#FF6A2C;margin-top:1px;">&bull;</span>{{ t.b1 }}</div>
+              <div style="display:flex;gap:11px;font-family:'Noto Sans JP','Inter',sans-serif;font-size:13.5px;color:#564f49;line-height:1.55;"><span style="color:#FF6A2C;margin-top:1px;">&bull;</span>{{ t.b2 }}</div>
+              <div style="display:flex;gap:11px;font-family:'Noto Sans JP','Inter',sans-serif;font-size:13.5px;color:#564f49;line-height:1.55;"><span style="color:#FF6A2C;margin-top:1px;">&bull;</span>{{ t.b3 }}</div>
+              <div style="display:flex;gap:11px;font-family:'Noto Sans JP','Inter',sans-serif;font-size:13.5px;color:#564f49;line-height:1.55;"><span style="color:#FF6A2C;margin-top:1px;">&bull;</span>{{ t.b4 }}</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Newsreader',serif;font-size:20px;font-weight:500;margin-bottom:18px;">Outcome</div>
+            <p style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:13.5px;line-height:1.95;color:#6f665f;margin:0;">{{ t.outcomeBody }}</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:50px 40px 72px;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <div style="font-family:'Newsreader','Noto Serif JP',serif;font-size:23px;font-weight:500;margin-bottom:22px;">UI Highlights</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+            <div>
+              <div style="height:152px;border-radius:14px;overflow:hidden;background:#1c1a18;margin-bottom:14px;"><img src="uploads/illust-pululu-mockup.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 24%;"></div>
+              <div style="font-family:'Noto Serif JP','Newsreader',serif;font-size:15px;font-weight:500;margin-bottom:6px;">{{ t.h1t }}</div>
+              <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;line-height:1.75;color:#9a908a;">{{ t.h1b }}</div>
+            </div>
+            <div>
+              <div style="height:152px;border-radius:14px;overflow:hidden;background:#1c1a18;margin-bottom:14px;"><img src="uploads/illust-pululu-mockup.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 55%;"></div>
+              <div style="font-family:'Noto Serif JP','Newsreader',serif;font-size:15px;font-weight:500;margin-bottom:6px;">{{ t.h2t }}</div>
+              <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;line-height:1.75;color:#9a908a;">{{ t.h2b }}</div>
+            </div>
+            <div>
+              <div style="height:152px;border-radius:14px;overflow:hidden;background:#1c1a18;margin-bottom:14px;"><img src="uploads/illust-pululu-mockup.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 86%;"></div>
+              <div style="font-family:'Noto Serif JP','Newsreader',serif;font-size:15px;font-weight:500;margin-bottom:6px;">{{ t.h3t }}</div>
+              <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;line-height:1.75;color:#9a908a;">{{ t.h3b }}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= WRITING ================= -->
+    <sc-if value="{{ isWriting }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1140px;margin:0 auto;padding:60px 40px 30px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:30px;align-items:center;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;"><h1 style="font-family:'Newsreader','Noto Serif JP',serif;font-weight:500;font-size:clamp(46px,5.4vw,74px);line-height:1;letter-spacing:-1.4px;margin:0;">Timeline<span style="color:#FF6A2C;">.</span></h1><span style="font-family:'Inter',sans-serif;font-size:16px;color:#b1a79f;">Blog</span></div>
+          <p style="font-family:'Noto Serif JP','Newsreader',serif;font-size:17px;line-height:1.9;color:#5c544e;margin:0;">{{ t.writingSub }}</p>
+        </div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;justify-self:end;width:100%;max-width:430px;overflow:hidden;">
+          <img src="uploads/illust-hero.png" alt="" style="width:100%;display:block;margin-bottom:-11.5%;mix-blend-mode:multiply;animation:float 8s ease-in-out infinite;">
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:14px 40px 8px;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">{{ filterBar }}</div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:18px 40px 72px;">
+        <sc-for list="{{ filteredPosts }}" as="p" hint-placeholder-count="6">
+          <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;display:grid;grid-template-columns:104px 30px 1fr;gap:14px;align-items:start;padding:24px 0;border-bottom:1px solid #efe7e2;cursor:pointer;transition:padding-left .25s;" style-hover="padding-left:8px;">
+            <div style="font-family:'Inter',sans-serif;font-size:14px;color:#b3a9a2;letter-spacing:.5px;padding-top:3px;">{{ p.date }}</div>
+            <div style="position:relative;align-self:stretch;display:flex;justify-content:center;"><div style="position:absolute;top:-24px;bottom:-24px;width:1.5px;background:#f3d6c6;"></div><div style="width:11px;height:11px;border-radius:50%;border:1.6px solid #FF6A2C;background:#FAF7F5;margin-top:4px;position:relative;z-index:1;"></div></div>
+            <div>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:7px;"><span style="font-family:'Noto Serif JP','Newsreader',serif;font-size:18px;color:#2a2622;font-weight:500;">{{ p.title }}</span>{{ p.tagEl }}</div>
+              <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:13.5px;color:#9a908a;line-height:1.75;">{{ p.desc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </section>
+    </sc-if>
+
+    <!-- ================= ABOUT ================= -->
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1140px;margin:0 auto;padding:60px 40px 30px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:30px;align-items:center;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <h1 style="font-family:'Newsreader','Noto Serif JP',serif;font-weight:500;font-size:clamp(50px,6vw,82px);line-height:1;letter-spacing:-1.6px;margin:0 0 26px;">About<span style="color:#FF6A2C;">.</span></h1>
+          <p style="font-family:'Noto Serif JP','Newsreader',serif;font-size:19px;line-height:1.95;color:#3c3733;margin:0 0 12px;max-width:26ch;">{{ t.aboutLead }}</p>
+          <sc-if value="{{ isJp }}" hint-placeholder-val="{{ true }}"><p style="font-family:'Inter',sans-serif;font-size:13.5px;color:#b1a79f;margin:0;">Building meaningful products with code and curiosity.</p></sc-if>
+        </div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;justify-self:end;width:100%;max-width:460px;overflow:hidden;">
+          <img src="uploads/illust-hero.png" alt="" style="width:100%;display:block;margin-bottom:-11.5%;mix-blend-mode:multiply;animation:float 8s ease-in-out infinite;">
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:46px 40px 0;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;font-family:'Newsreader','Noto Serif JP',serif;font-size:28px;font-weight:500;margin-bottom:24px;">Profile</div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;display:grid;grid-template-columns:auto 1fr;gap:38px;align-items:center;">
+          <div style="display:flex;align-items:center;gap:30px;">
+            <div style="width:118px;height:118px;border-radius:50%;background:linear-gradient(135deg,#efe3db,#e3d2c8);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#c3a594" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;gap:14px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg><span style="font-family:'Inter',sans-serif;font-size:13px;color:#a89f99;width:48px;">Role</span><span style="font-family:'Inter',sans-serif;font-size:14px;color:#2a2622;">Software Engineer</span></div>
+              <div style="display:flex;align-items:center;gap:14px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span style="font-family:'Inter',sans-serif;font-size:13px;color:#a89f99;width:48px;">Base</span><span style="font-family:'Inter',sans-serif;font-size:14px;color:#2a2622;">Sydney / Tokyo</span></div>
+              <div style="display:flex;align-items:center;gap:14px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg><span style="font-family:'Inter',sans-serif;font-size:13px;color:#a89f99;width:48px;">Values</span><span style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14px;color:#2a2622;">{{ t.profileValues }}</span></div>
+            </div>
+          </div>
+          <p style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14.5px;line-height:2.05;color:#6f665f;margin:0;border-left:1px solid #ece2dc;padding-left:38px;">{{ t.aboutBio }}</p>
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:48px 40px 0;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;font-family:'Newsreader','Noto Serif JP',serif;font-size:28px;font-weight:500;margin-bottom:20px;">Career</div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <div style="display:grid;grid-template-columns:150px 30px 1fr;gap:14px;align-items:start;padding:18px 0;border-bottom:1px solid #efe7e2;">
+            <div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#b3a9a2;padding-top:2px;">{{ t.c1p }}</div>
+            <div style="position:relative;align-self:stretch;display:flex;justify-content:center;"><div style="position:absolute;top:-18px;bottom:-18px;width:1.5px;background:#f3d6c6;"></div><div style="width:11px;height:11px;border-radius:50%;border:1.6px solid #FF6A2C;background:#FAF7F5;margin-top:3px;position:relative;z-index:1;"></div></div>
+            <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14px;color:#3c3733;line-height:1.75;">{{ t.c1l1 }}<br><span style="color:#9a908a;font-size:13px;">{{ t.c1l2 }}</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:150px 30px 1fr;gap:14px;align-items:start;padding:18px 0;border-bottom:1px solid #efe7e2;">
+            <div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#b3a9a2;padding-top:2px;">2021.04 &ndash; 2023.12</div>
+            <div style="position:relative;align-self:stretch;display:flex;justify-content:center;"><div style="position:absolute;top:-18px;bottom:-18px;width:1.5px;background:#f3d6c6;"></div><div style="width:11px;height:11px;border-radius:50%;border:1.6px solid #FF6A2C;background:#FAF7F5;margin-top:3px;position:relative;z-index:1;"></div></div>
+            <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14px;color:#3c3733;line-height:1.75;">{{ t.c2l1 }}<br><span style="color:#9a908a;font-size:13px;">{{ t.c2l2 }}</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:150px 30px 1fr;gap:14px;align-items:start;padding:18px 0;border-bottom:1px solid #efe7e2;">
+            <div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#b3a9a2;padding-top:2px;">2019.04 &ndash; 2021.03</div>
+            <div style="position:relative;align-self:stretch;display:flex;justify-content:center;"><div style="position:absolute;top:-18px;bottom:-18px;width:1.5px;background:#f3d6c6;"></div><div style="width:11px;height:11px;border-radius:50%;border:1.6px solid #FF6A2C;background:#FAF7F5;margin-top:3px;position:relative;z-index:1;"></div></div>
+            <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14px;color:#3c3733;line-height:1.75;">{{ t.c3l1 }}<br><span style="color:#9a908a;font-size:13px;">{{ t.c3l2 }}</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:150px 30px 1fr;gap:14px;align-items:start;padding:18px 0;">
+            <div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#b3a9a2;padding-top:2px;">2015.04 &ndash; 2019.03</div>
+            <div style="position:relative;align-self:stretch;display:flex;justify-content:center;"><div style="position:absolute;top:-18px;bottom:6px;width:1.5px;background:#f3d6c6;"></div><div style="width:11px;height:11px;border-radius:50%;border:1.6px solid #FF6A2C;background:#FAF7F5;margin-top:3px;position:relative;z-index:1;"></div></div>
+            <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14px;color:#3c3733;line-height:1.75;">{{ t.c4l1 }}</div>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:52px 40px 0;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;font-family:'Newsreader','Noto Serif JP',serif;font-size:28px;font-weight:500;margin-bottom:22px;">Values</div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+          <div style="background:#fff;border:1px solid #ece5e0;border-radius:16px;padding:26px;transition:transform .25s,box-shadow .25s;" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(60,40,20,0.3);">
+            <div style="width:46px;height:46px;border-radius:50%;background:#FCEDE5;display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8M12 13c0-3.5-2.5-6-6-6 0 3.5 2.5 6 6 6zM12 13c0-3.5 2.5-6 6-6 0 3.5-2.5 6-6 6z"/></svg></div>
+            <div style="font-family:'Noto Serif JP','Newsreader',serif;font-size:17px;font-weight:500;margin-bottom:10px;">{{ t.v1t }}</div>
+            <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:13px;line-height:1.85;color:#8a807a;">{{ t.v1b }}</div>
+          </div>
+          <div style="background:#fff;border:1px solid #ece5e0;border-radius:16px;padding:26px;transition:transform .25s,box-shadow .25s;" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(60,40,20,0.3);">
+            <div style="width:46px;height:46px;border-radius:50%;background:#FCEDE5;display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M16 16l4.5 4.5"/></svg></div>
+            <div style="font-family:'Noto Serif JP','Newsreader',serif;font-size:17px;font-weight:500;margin-bottom:10px;">{{ t.v2t }}</div>
+            <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:13px;line-height:1.85;color:#8a807a;">{{ t.v2b }}</div>
+          </div>
+          <div style="background:#fff;border:1px solid #ece5e0;border-radius:16px;padding:26px;transition:transform .25s,box-shadow .25s;" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -28px rgba(60,40,20,0.3);">
+            <div style="width:46px;height:46px;border-radius:50%;background:#FCEDE5;display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></div>
+            <div style="font-family:'Noto Serif JP','Newsreader',serif;font-size:17px;font-weight:500;margin-bottom:10px;">{{ t.v3t }}</div>
+            <div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:13px;line-height:1.85;color:#8a807a;">{{ t.v3b }}</div>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:52px 40px 72px;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;font-family:'Newsreader','Noto Serif JP',serif;font-size:28px;font-weight:500;margin-bottom:24px;">Life / Interests</div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;">
+          <div style="border-top:1px solid #ece2dc;padding-top:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c98a64" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:14px;"><path d="M8 3c0 1.5-1 2-1 3.5S8 9 8 9M12 3c0 1.5-1 2-1 3.5S12 9 12 9M16 3c0 1.5-1 2-1 3.5S16 9 16 9"/><ellipse cx="12" cy="15" rx="8" ry="3.2"/><path d="M5 15c0 3 3.5 5 7 5s7-2 7-5"/></svg><div style="font-family:'Newsreader',serif;font-size:18px;font-weight:500;margin-bottom:8px;">Sauna</div><div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;line-height:1.8;color:#9a908a;">{{ t.i1b }}</div></div>
+          <div style="border-top:1px solid #ece2dc;padding-top:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c98a64" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:14px;"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/></svg><div style="font-family:'Newsreader',serif;font-size:18px;font-weight:500;margin-bottom:8px;">Camera</div><div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;line-height:1.8;color:#9a908a;">{{ t.i2b }}</div></div>
+          <div style="border-top:1px solid #ece2dc;padding-top:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c98a64" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:14px;"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M7 6l-1 4M12 6l-1 4M17 6l-1 4"/></svg><div style="font-family:'Newsreader',serif;font-size:18px;font-weight:500;margin-bottom:8px;">Movies</div><div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;line-height:1.8;color:#9a908a;">{{ t.i3b }}</div></div>
+          <div style="border-top:1px solid #ece2dc;padding-top:20px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c98a64" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:14px;"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg><div style="font-family:'Newsreader',serif;font-size:18px;font-weight:500;margin-bottom:8px;">Building</div><div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;line-height:1.8;color:#9a908a;">{{ t.i4b }}</div></div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= CONTACT ================= -->
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1140px;margin:0 auto;padding:60px 40px 20px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <h1 style="font-family:'Newsreader','Noto Serif JP',serif;font-weight:500;font-size:clamp(52px,6.4vw,88px);line-height:1;letter-spacing:-1.8px;margin:0 0 26px;">Contact<span style="color:#FF6A2C;">.</span></h1>
+          <p style="font-family:'Newsreader','Noto Serif JP',serif;font-style:italic;font-size:22px;color:#2a2622;margin:0 0 14px;">Let&rsquo;s build something meaningful.</p>
+          <p style="font-family:'Noto Serif JP','Newsreader',serif;font-size:15px;line-height:1.9;color:#7d746d;margin:0;">{{ t.contactSub }}</p>
+        </div>
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;justify-self:end;width:100%;max-width:470px;overflow:hidden;">
+          <img src="uploads/illust-envelope.png" alt="" style="width:100%;display:block;margin-bottom:-13%;mix-blend-mode:multiply;animation:float 8s ease-in-out infinite;">
+        </div>
+      </section>
+
+      <section style="max-width:1140px;margin:0 auto;padding:40px 40px 72px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;">
+          <div style="font-family:'Newsreader','Noto Serif JP',serif;font-size:26px;font-weight:500;margin-bottom:26px;">Get in touch</div>
+          <a href="mailto:jotaro.yuza@gmail.com" style="display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;text-decoration:none;padding:18px 6px;border-bottom:1px solid #efe7e2;transition:padding-left .25s;" style-hover="padding-left:14px;">
+            <div style="width:46px;height:46px;border-radius:12px;background:#fff;border:1px solid #ece5e0;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+            <div><div style="font-family:'Inter',sans-serif;font-size:15px;color:#1a1a1a;margin-bottom:3px;">Email</div><div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#FF6A2C;">hello@joj0hq</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="https://github.com/joj0hq" target="_blank" style="display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;text-decoration:none;padding:18px 6px;border-bottom:1px solid #efe7e2;transition:padding-left .25s;" style-hover="padding-left:14px;">
+            <div style="width:46px;height:46px;border-radius:12px;background:#fff;border:1px solid #ece5e0;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#1a1a1a"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.1 6.8-9.6C22 6.6 17.5 2 12 2z"/></svg></div>
+            <div><div style="font-family:'Inter',sans-serif;font-size:15px;color:#1a1a1a;margin-bottom:3px;">GitHub</div><div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#FF6A2C;">github.com/joj0hq</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/joj0hq/" target="_blank" style="display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;text-decoration:none;padding:18px 6px;border-bottom:1px solid #efe7e2;transition:padding-left .25s;" style-hover="padding-left:14px;">
+            <div style="width:46px;height:46px;border-radius:12px;background:#fff;border:1px solid #ece5e0;display:flex;align-items:center;justify-content:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#1a1a1a"><path d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0zM3.3 8.5h3.3V21H3.3V8.5zm5.3 0h3.16v1.7h.05c.44-.83 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5v6.5h-3.3v-5.8c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.9H8.6V8.5z"/></svg></div>
+            <div><div style="font-family:'Inter',sans-serif;font-size:15px;color:#1a1a1a;margin-bottom:3px;">LinkedIn</div><div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#FF6A2C;">linkedin.com/in/joj0hq</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="https://x.com/joj0hq" target="_blank" style="display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;text-decoration:none;padding:18px 6px;border-bottom:1px solid #efe7e2;transition:padding-left .25s;" style-hover="padding-left:14px;">
+            <div style="width:46px;height:46px;border-radius:12px;background:#fff;border:1px solid #ece5e0;display:flex;align-items:center;justify-content:center;"><svg width="17" height="17" viewBox="0 0 24 24" fill="#1a1a1a"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2l7.6-8.7L1.5 2h6.8l4.7 6.2L18.9 2zm-1.2 18h1.8L7.4 3.9H5.5L17.7 20z"/></svg></div>
+            <div><div style="font-family:'Inter',sans-serif;font-size:15px;color:#1a1a1a;margin-bottom:3px;">X</div><div style="font-family:'Inter',sans-serif;font-size:13.5px;color:#FF6A2C;">@joj0hq</div></div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6A2C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div data-reveal style="animation:ru .7s cubic-bezier(.2,.7,.2,1) both;background:#FBF8F6;border:1px solid #f0e9e3;border-radius:20px;padding:38px;box-shadow:0 30px 60px -50px rgba(60,40,20,0.4);">
+          <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px;"><span style="width:24px;height:24px;border-radius:50%;background:#FCEDE5;display:flex;align-items:center;justify-content:center;"><span style="width:8px;height:8px;border-radius:50%;background:#FF6A2C;"></span></span><span style="font-family:'Newsreader','Noto Serif JP',serif;font-size:21px;font-weight:500;">Open to conversation</span></div>
+          <p style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:13.5px;line-height:1.95;color:#7d746d;margin:0 0 26px;">{{ t.openBody }}</p>
+          <div style="border-top:1px solid #ece2dc;padding-top:24px;display:flex;flex-direction:column;gap:22px;">
+            <div style="display:flex;gap:16px;align-items:flex-start;"><span style="width:38px;height:38px;border-radius:50%;background:#f2ece7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6f665f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.5A8 8 0 1 1 21 12z"/></svg></span><div><div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:14px;color:#2a2622;margin-bottom:3px;">{{ t.replyJa }}</div><sc-if value="{{ isJp }}" hint-placeholder-val="{{ true }}"><div style="font-family:'Inter',sans-serif;font-size:12.5px;color:#a89f99;">We typically reply within 1&ndash;2 business days.</div></sc-if></div></div>
+            <div style="display:flex;gap:16px;align-items:flex-start;"><span style="width:38px;height:38px;border-radius:50%;background:#f2ece7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6f665f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><div style="font-family:'Inter',sans-serif;font-size:14px;color:#2a2622;margin-bottom:3px;">Based in Sydney / Tokyo</div><div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;color:#a89f99;">{{ t.basedBody }}</div></div></div>
+            <div style="display:flex;gap:16px;align-items:flex-start;"><span style="width:38px;height:38px;border-radius:50%;background:#f2ece7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6f665f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M15 20a4.5 4.5 0 0 1 5.5-4.4"/></svg></span><div><div style="font-family:'Inter',sans-serif;font-size:14px;color:#2a2622;margin-bottom:3px;">Available for collaboration</div><div style="font-family:'Noto Sans JP','Inter',sans-serif;font-size:12.5px;color:#a89f99;line-height:1.7;">{{ t.availBody }}</div></div></div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer style="border-top:1px solid #ece2dc;background:rgba(247,242,238,0.5);">
+    <div style="max-width:1140px;margin:0 auto;padding:34px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div style="font-family:'Newsreader','Noto Serif JP',serif;font-size:24px;font-weight:500;">Contact</div>
+      <div style="display:flex;align-items:center;gap:30px;flex-wrap:wrap;">
+        <a href="mailto:jotaro.yuza@gmail.com" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:#4a443f;font-family:'Inter',sans-serif;font-size:14px;transition:color .2s;" style-hover="color:#FF6A2C;"><span style="width:30px;height:30px;border-radius:50%;border:1px solid #e2d9d2;display:flex;align-items:center;justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>hello@joj0hq</a>
+        <a href="https://github.com/joj0hq" target="_blank" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:#4a443f;font-family:'Inter',sans-serif;font-size:14px;transition:color .2s;" style-hover="color:#FF6A2C;"><span style="width:30px;height:30px;border-radius:50%;border:1px solid #e2d9d2;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.1 6.8-9.6C22 6.6 17.5 2 12 2z"/></svg></span>GitHub</a>
+        <a href="https://www.linkedin.com/in/joj0hq/" target="_blank" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:#4a443f;font-family:'Inter',sans-serif;font-size:14px;transition:color .2s;" style-hover="color:#FF6A2C;"><span style="width:30px;height:30px;border-radius:50%;border:1px solid #e2d9d2;display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0zM3.3 8.5h3.3V21H3.3V8.5zm5.3 0h3.16v1.7h.05c.44-.83 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5v6.5h-3.3v-5.8c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.9H8.6V8.5z"/></svg></span>LinkedIn</a>
+        <button onClick="{{ goTop }}" style="width:42px;height:42px;border-radius:50%;border:1px solid #e2d9d2;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .25s,background .25s;" style-hover="transform:translateY(-3px);background:#FF6A2C;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+      </div>
+    </div>
+    <div style="max-width:1140px;margin:0 auto;padding:0 40px 30px;font-family:'Inter',sans-serif;font-size:12.5px;color:#b1a79f;">&copy; 2024 jojo (Jotaro Yuza)</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820}}">
+class Component extends DCLogic {
+  state = { page: 'home', lang: 'jp', filter: 'All' };
+
+  componentDidUpdate(){ this._scheduleReveal(); }
+  _scheduleReveal(){
+    clearTimeout(this._srt);
+    this._srt = setTimeout(function(){
+      try{ document.querySelectorAll('[data-reveal]').forEach(function(el){
+        if(getComputedStyle(el).opacity!=='1'){ el.style.animation='none'; el.style.opacity='1'; el.style.transform='none'; }
+      }); }catch(e){}
+    }, 1100);
+  }
+
+  go(page){ this.setState({ page }); try{ window.scrollTo(0,0); }catch(e){} }
+  setLang(l){ this.setState({ lang: l }); }
+  setFilter(f){ this.setState({ filter: f }); }
+
+  renderVals(){
+    const lang = this.state.lang, jp = lang === 'jp', page = this.state.page;
+    const P = (o)=> (o[lang] != null ? o[lang] : o.jp);
+
+    const L = {
+      heroLead:{jp:'プロダクトとテクノロジーで、人の時間を豊かにする体験をつくります。', en:'Building meaningful products with code and curiosity.'},
+      pululuTagline:{jp:'リアルタイム翻訳で、興味をもっと自由に。', en:'Real-time translation, for freer curiosity.'},
+      pululuDesc:{jp:'多言語の情報や会話をリアルタイムで理解し、好きなコンテンツや人とのつながりを広げる AI 翻訳サポートアプリです。', en:'An AI translation companion that helps you understand content and people across languages — in real time.'},
+      writingSub:{jp:'プロダクト・エンジニアリング・暮らしについて思うこと。', en:'Thoughts on product, engineering, and life.'},
+      aboutLead:{jp:'プロダクトとテクノロジーで、人の時間を豊かにする体験をつくります。', en:'Building meaningful products with code and curiosity.'},
+      aboutBio:{jp:'ソフトウェアエンジニアとして、Web やモバイルのプロダクト開発に取り組んでいます。0 → 1 の立ち上げから、グロースや運用まで、ユーザーにとって価値のある体験を届けることを大切にしています。', en:'As a software engineer I build web and mobile products — from 0→1 launches through growth and operations — always focused on delivering valuable experiences for the people who use them.'},
+      profileValues:{jp:'誠実さ / 探究心 / 継続 / 思いやり', en:'Integrity / Curiosity / Persistence / Empathy'},
+      contactSub:{jp:'一緒に、価値あるプロダクトをつくりましょう。', en:'Let us build something valuable, together.'},
+      openBody:{jp:'新しいプロジェクトのご相談、協業のご提案、カジュアルなご相談など、お気軽にご連絡ください。', en:'A new project, a collaboration, or just a casual chat — feel free to reach out anytime.'},
+      replyJa:{jp:'通常 1–2 営業日以内にご返信いたします。', en:'We typically reply within 1–2 business days.'},
+      basedBody:{jp:'シドニーと東京を拠点に活動しています。', en:'Based in Sydney and Tokyo.'},
+      availBody:{jp:'プロジェクトの規模は問いません。ご一緒できる機会を楽しみにしています。', en:'Any project size is welcome — looking forward to working together.'},
+      pululuLead:{jp:'リアルタイム翻訳で言葉の壁をなくし、世界中の人ともっと自然につながれる体験をつくりました。', en:'A real-time translation experience that removes language barriers so people around the world can connect more naturally.'},
+      overviewBody:{jp:'Pululu は、会話をリアルタイムで翻訳し、異なる言語の人どうしをシームレスにつなぐモバイルアプリです。シンプルな操作で翻訳・通訳・コミュニケーションをサポートし、旅行、趣味、推し活など、あらゆるシーンで活躍します。', en:'Pululu is a mobile app that translates conversations in real time, seamlessly connecting people who speak different languages — for travel, hobbies, fandom, and everyday moments.'},
+      outcomeBody:{jp:'直感的な UI とリアルタイム翻訳体験により、ユーザー同士の自然な会話をサポート。β テストでは「使いやすい」「会話が弾む」との声が多く、継続率の向上に貢献しました。', en:'With an intuitive UI and real-time translation, Pululu supports natural conversation. Beta testers praised it as easy and fun to use, helping improve retention.'},
+      tag1:{jp:'AI', en:'AI'},
+      tag2:{jp:'翻訳', en:'Translation'},
+      tag3:{jp:'コミュニケーション', en:'Communication'},
+      tag2en:{jp:'Translation', en:'Translation'},
+      tag3en:{jp:'Communication', en:'Communication'},
+      b1:{jp:'リアルタイム翻訳の UI/UX デザイン', en:'UI/UX design for real-time translation'},
+      b2:{jp:'話題選択とプロフィールの設計', en:'Topic selection & profile design'},
+      b3:{jp:'翻訳結果の可視化とトグル操作', en:'Visualizing translation with toggle controls'},
+      b4:{jp:'多言語・多文化に配慮した UI 設計', en:'Multilingual, culturally-aware UI design'},
+      h1t:{jp:'話題を選んで会話をスタート', en:'Start a chat by topic'},
+      h1b:{jp:'興味のあるテーマを選ぶだけで、自然な会話のきっかけをつくれます。', en:'Pick a topic you like and spark a natural conversation.'},
+      h2t:{jp:'リアルタイムで翻訳表示', en:'Real-time translation display'},
+      h2b:{jp:'話した内容がその場で翻訳され、スムーズなコミュニケーションを実現します。', en:'What you say is translated on the spot for smooth communication.'},
+      h3t:{jp:'ワンタップで翻訳 ON/OFF', en:'Toggle translation in one tap'},
+      h3b:{jp:'シンプルなトグル操作で、すぐに翻訳を開始・停止できます。', en:'Start or stop translation instantly with a simple toggle.'},
+      c1p:{jp:'2024.01 – 現在', en:'2024.01 – Present'},
+      c1l1:{jp:'フリーランスソフトウェアエンジニアとして独立', en:'Went independent as a freelance software engineer'},
+      c1l2:{jp:'プロダクト開発や技術支援を中心に活動', en:'Focusing on product development and technical support'},
+      c2l1:{jp:'スタートアップにてソフトウェアエンジニア', en:'Software engineer at a startup'},
+      c2l2:{jp:'Web・モバイルアプリの開発とグロースに従事', en:'Worked on web / mobile app development and growth'},
+      c3l1:{jp:'受託開発会社にてエンジニア', en:'Engineer at a software development agency'},
+      c3l2:{jp:'Web サービスや業務システムの開発を担当', en:'Built web services and business systems'},
+      c4l1:{jp:'情報系学部にてコンピュータサイエンスを専攻', en:'Studied Computer Science at university'},
+      v1t:{jp:'ユーザー起点', en:'User-first'},
+      v1b:{jp:'使う人の課題や文脈に寄り添い、本質的に価値のある体験をつくります。', en:'Designing essential, valuable experiences grounded in real user context.'},
+      v2t:{jp:'探究と学び', en:'Curiosity & learning'},
+      v2b:{jp:'技術やプロダクトに対して常に好奇心を持ち、学び続け、より良い選択をしていきます。', en:'Staying curious about technology and products, always learning and choosing better.'},
+      v3t:{jp:'誠実なものづくり', en:'Honest craft'},
+      v3b:{jp:'小さなことにも丁寧に向き合い、信頼されるプロダクトを積み重ねます。', en:'Caring about the small things to build products people can trust.'},
+      i1b:{jp:'サウナで思考をリセットし、新しいアイデアを考えます。', en:'Resetting my mind in the sauna to find new ideas.'},
+      i2b:{jp:'写真を撮ることで、日常の美しさに気づきます。', en:'Noticing the beauty of everyday life through photography.'},
+      i3b:{jp:'映画からストーリーの構成や感情の動きを学びます。', en:'Learning story structure and emotion from films.'},
+      i4b:{jp:'アイデアを形にし、プロダクトを育てていくのが好きです。', en:'I love turning ideas into products and growing them.'}
+    };
+    const t = {}; for(const k in L){ t[k] = P(L[k]); }
+
+    const CAT = {
+      Product:{bg:'#E6F0DD', fg:'#5d7d49'},
+      Engineering:{bg:'#E4EDF6', fg:'#4d6585'},
+      Life:{bg:'#FBE7DD', fg:'#b06a47'}
+    };
+    const RAW = [
+      {date:'2024.06.01', cat:'Product', jt:'良いプロダクトは、小さな気づきから生まれる', et:'Great products grow from small noticings', jd:'日常の中の違和感や、ふとした気づきがプロダクトの種になる。', ed:'Everyday friction and quiet observations become the seeds of a product.'},
+      {date:'2024.05.12', cat:'Engineering', jt:'チームで考える、シンプルな設計のつくり方', et:'Designing simple systems as a team', jd:'複雑さを削ぎ落とし、本質に集中するためのプロセス。', ed:'A process for cutting complexity and focusing on the essentials.'},
+      {date:'2024.04.20', cat:'Life', jt:'集中と余白のバランスをどうつくるか', et:'Balancing focus and white space', jd:'アウトプットの質を高めるために、意識している習慣について。', ed:'The habits I keep to raise the quality of my output.'},
+      {date:'2024.03.11', cat:'Product', jt:'プロダクトに熱を宿すための意思決定', et:'Decisions that give a product its soul', jd:'迷いながらも、ユーザーの価値に寄り添う決め方。', ed:'How I decide — uncertain, but always close to user value.'},
+      {date:'2024.02.25', cat:'Engineering', jt:'小さな実験を、素早く回す', et:'Running small experiments, fast', jd:'仮説を立てて、学びを得て、次に活かすサイクルを回す。', ed:'Form a hypothesis, learn from it, and feed it into the next cycle.'},
+      {date:'2024.01.30', cat:'Product', jt:'ユーザーの声を、プロダクトに変える', et:'Turning user voices into product', jd:'フィードバックを解釈し、価値ある体験に落とし込むプロセス。', ed:'Interpreting feedback and shaping it into valuable experiences.'},
+      {date:'2024.01.08', cat:'Engineering', jt:'エンジニアとしての学び方', et:'How I learn as an engineer', jd:'継続的に成長するために、何を学び、どう実践しているか。', ed:'What I learn and how I practice it to keep growing.'},
+      {date:'2023.12.15', cat:'Life', jt:'年末にふり返る、今年つくったもの', et:'A year-end look back at what I built', jd:'2023 に取り組んだプロジェクトと、そこから得た学び。', ed:'The projects I worked on in 2023 and what they taught me.'}
+    ];
+    const mkTag = (cat)=> React.createElement('span', { style:{ fontFamily:"'Inter','Noto Sans JP',sans-serif", fontSize:'12px', padding:'4px 13px', borderRadius:'999px', background:CAT[cat].bg, color:CAT[cat].fg, whiteSpace:'nowrap' } }, cat);
+    const posts = RAW
+      .filter(p => this.state.filter === 'All' || p.cat === this.state.filter)
+      .map(p => ({ date:p.date, cat:p.cat, title: jp?p.jt:p.et, desc: jp?p.jd:p.ed, tagEl: mkTag(p.cat) }));
+    const homePosts = RAW.slice(0,4).map(p => ({ date:p.date, title: jp?p.jt:p.et }));
+
+    // ---- nav ----
+    const linkBtn = (key, label) => {
+      const on = page === key;
+      return React.createElement('button', {
+        key, onClick: ()=>this.go(key),
+        style:{ position:'relative', background:'none', border:'none', cursor:'pointer', padding:'4px 0', fontFamily:"'Inter','Noto Sans JP',sans-serif", fontSize:'15px', color: on?'#FF6A2C':'#3a3631', fontWeight: on?600:400, transition:'color .25s', letterSpacing:'.2px' },
+        onMouseEnter: e=>{ if(!on) e.currentTarget.style.color='#FF6A2C'; },
+        onMouseLeave: e=>{ if(!on) e.currentTarget.style.color='#3a3631'; }
+      }, label, on ? React.createElement('span',{ style:{ position:'absolute', left:'50%', bottom:'-9px', transform:'translateX(-50%)', width:'5px', height:'5px', borderRadius:'50%', background:'#FF6A2C' } }) : null);
+    };
+    const langBtn = (l, label) => {
+      const on = lang === l;
+      return React.createElement('span', {
+        onClick: ()=>this.setLang(l),
+        style:{ cursor:'pointer', color: on?'#FF6A2C':'#b6aca4', fontWeight: on?600:500, transition:'color .2s' }
+      }, label);
+    };
+    const navBar = React.createElement('div', { style:{ maxWidth:'1140px', margin:'0 auto', padding:'20px 40px', display:'flex', alignItems:'center', justifyContent:'space-between' } },
+      React.createElement('div', { onClick:()=>this.go('home'), style:{ fontFamily:"'Newsreader',serif", fontStyle:'italic', fontWeight:500, fontSize:'27px', cursor:'pointer', letterSpacing:'.5px' } }, 'jojo', React.createElement('span',{style:{color:'#FF6A2C'}},'.')),
+      React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'40px' } },
+        React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'34px' } },
+          linkBtn('work','Work'), linkBtn('writing','Writing'), linkBtn('about','About'), linkBtn('contact','Contact')
+        ),
+        React.createElement('div', { style:{ display:'flex', alignItems:'center', gap:'7px', fontFamily:"'Inter',sans-serif", fontSize:'13px', letterSpacing:'.5px' } },
+          langBtn('jp','JP'), React.createElement('span',{style:{color:'#d6cdc6'}},'/'), langBtn('en','EN')
+        )
+      )
+    );
+
+    // ---- filter chips ----
+    const chips = ['All','Product','Engineering','Life'];
+    const filterBar = React.createElement('div', { style:{ display:'flex', gap:'12px', flexWrap:'wrap' } },
+      chips.map(c => {
+        const on = this.state.filter === c;
+        return React.createElement('button', {
+          key:c, onClick: ()=>this.setFilter(c),
+          style:{ padding:'9px 22px', borderRadius:'999px', cursor:'pointer', fontFamily:"'Inter','Noto Sans JP',sans-serif", fontSize:'14px', border: on?'1px solid #FF6A2C':'1px solid #e4ded9', background: on?'rgba(255,106,44,0.07)':'#fff', color: on?'#FF6A2C':'#6a6a6a', fontWeight: on?600:400, transition:'all .2s' },
+          onMouseEnter: e=>{ if(!on){ e.currentTarget.style.borderColor='#d8c2b6'; } },
+          onMouseLeave: e=>{ if(!on){ e.currentTarget.style.borderColor='#e4ded9'; } }
+        }, c);
+      })
+    );
+
+    return {
+      t, isJp: jp,
+      isHome: page==='home', isWork: page==='work', isWriting: page==='writing', isAbout: page==='about', isContact: page==='contact',
+      posts, homePosts, filteredPosts: posts,
+      navBar, filterBar,
+      goWork: ()=>this.go('work'), goWriting: ()=>this.go('writing'), goAbout: ()=>this.go('about'), goContact: ()=>this.go('contact'), goHome: ()=>this.go('home'),
+      goTop: ()=>{ try{ window.scrollTo({top:0, behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); } }
+    };
+  }
+}
+</script>
+</body>
+</html>

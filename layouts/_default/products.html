@@ -1,0 +1,90 @@
+{{ define "main" }}
+<!-- HERO -->
+<section class="hero hero-single">
+  <div data-reveal>
+    <h1 class="xl">Work<span class="accent">.</span></h1>
+  </div>
+</section>
+
+<!-- PROJECTS (tabbed case studies) -->
+{{ with .Params.projects }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_projects" }}</div>
+
+  <div class="work-tabs" data-reveal role="tablist">
+    {{ range $i, $p := . }}
+    <button class="tab{{ if eq $i 0 }} is-active{{ end }}" type="button" data-work-tab="{{ $i }}">{{ $p.name }}</button>
+    {{ end }}
+  </div>
+
+  {{ range $i, $p := . }}
+  <article class="work-panel{{ if ne $i 0 }} is-hidden{{ end }}" data-work-panel="{{ $i }}" data-reveal>
+    <header class="cs-head">
+      <h2 class="cs-title">{{ $p.name }}{{ with $p.formerly }} <span class="cs-formerly">{{ . }}</span>{{ end }}{{ if eq $p.status "ended" }} <span class="cs-status">{{ i18n "status_ended" }}</span>{{ end }}</h2>
+      {{ with $p.tagline }}<p class="cs-tagline">{{ . }}</p>{{ end }}
+      {{ with $p.tags }}<div class="tags">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>{{ end }}
+    </header>
+
+    {{ with $p.images }}
+    <div class="cs-images">
+      {{ range . }}<img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">{{ end }}
+    </div>
+    {{ end }}
+
+    {{ with $p.appstore_id }}
+    {{ $country := cond (eq $.Language.Lang "ja") "jp" "us" }}
+    {{ $ver := "" }}{{ $date := "" }}{{ $notes := slice }}
+    {{ $lk := try (resources.GetRemote (printf "https://itunes.apple.com/lookup?id=%s&country=%s" . $country)) }}
+    {{ with $lk.Value }}{{ $u := try (transform.Unmarshal .Content) }}{{ with $u.Value }}{{ range (first 1 (.results | default slice)) }}
+      {{ $ver = .version }}
+      {{ $rd := (try (time.AsTime .currentVersionReleaseDate)).Value }}{{ with $rd }}{{ $date = .Format "2006.01.02" }}{{ end }}
+      {{ with .releaseNotes }}{{ $notes = (split (trim . " \n") "\n") }}{{ end }}
+    {{ end }}{{ end }}{{ end }}
+    <div class="cs-release" data-appstore-id="{{ . }}" data-country="{{ $country }}">
+      <div class="cs-rel-head">
+        <span class="cs-label" style="margin:0">{{ i18n "latest_release" }}</span>
+        <span class="cs-ver" data-rel-ver>{{ with $ver }}v{{ . }}{{ end }}</span>
+        <span class="cs-rel-date" data-rel-date>{{ $date }}</span>
+      </div>
+      <div class="cs-rel-notes" data-rel-notes>{{ range $notes }}{{ with (trim . " ") }}<div>{{ . }}</div>{{ end }}{{ end }}</div>
+    </div>
+    {{ end }}
+
+    {{ with $p.overview }}
+    <div class="cs-block">
+      <div class="cs-label">Overview</div>
+      <p class="cs-text">{{ . }}</p>
+    </div>
+    {{ end }}
+
+    <div class="cs-grid">
+      {{ with $p.role }}<div class="cs-block"><div class="cs-label">Role</div><p class="cs-text">{{ . }}</p></div>{{ end }}
+      {{ with $p.impact }}<div class="cs-block"><div class="cs-label">Impact</div><p class="cs-text">{{ . }}</p></div>{{ end }}
+    </div>
+
+    {{ with $p.contributions }}
+    <div class="cs-block">
+      <div class="cs-label">{{ i18n "cs_built" }}</div>
+      <ul class="cs-list">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+    </div>
+    {{ end }}
+
+    {{ with $p.links }}
+    <div class="cs-links">
+      {{ range . }}<a class="btn" href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a>{{ end }}
+    </div>
+    {{ end }}
+
+    {{ with $p.articles }}
+    <div class="cs-block">
+      <div class="cs-label">{{ i18n "cs_press" }}</div>
+      <ul class="cs-articles">
+        {{ range . }}<li><span class="cs-date">{{ .date }}</span><a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a></li>{{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </article>
+  {{ end }}
+</section>
+{{ end }}
+{{ end }}

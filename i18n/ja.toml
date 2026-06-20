@@ -1,0 +1,89 @@
+# UI chrome strings (Japanese)
+
+[nav_work]
+other = "Work"
+[nav_writing]
+other = "Writing"
+[nav_about]
+other = "About"
+[nav_contact]
+other = "Contact"
+[nav_search]
+other = "検索"
+
+[section_product]
+other = "Product"
+[section_timeline]
+other = "Timeline"
+[stat_years]
+other = "経験年数"
+[stat_products]
+other = "プロダクト"
+[stat_writing]
+other = "記事"
+[section_blog]
+other = "Blog"
+[section_projects]
+other = "Projects"
+[section_profile]
+other = "Profile"
+[section_career]
+other = "経歴"
+[section_values]
+other = "Values"
+[section_life]
+other = "Life / Interests"
+[section_contract]
+other = "業務委託"
+[section_personal]
+other = "個人開発"
+[section_skills]
+other = "スキル"
+[section_hobbies]
+other = "趣味"
+[section_references]
+other = "掲載・出演"
+
+[label_role]
+other = "Role"
+[label_base]
+other = "Base"
+[label_values]
+other = "Values"
+
+[case_study]
+other = "もっと見る"
+[cs_built]
+other = "主な実装"
+[cs_press]
+other = "関連記事"
+[status_ended]
+other = "サービス終了"
+[latest_release]
+other = "最新リリース"
+[read_more]
+other = "続きを読む"
+[more_on]
+other = "もっと読む"
+[view_all_posts]
+other = "記事をすべて見る"
+[filter_all]
+other = "All"
+
+[get_in_touch]
+other = "Get in touch"
+[open_to_conversation]
+other = "Open to conversation"
+
+[back_to_top]
+other = "トップへ戻る"
+
+[footer_contact]
+other = "Contact"
+
+[lang_switch]
+other = "言語"
+[nf_msg]
+other = "お探しのページは見つかりませんでした。"
+[nf_home]
+other = "ホームへ戻る"
