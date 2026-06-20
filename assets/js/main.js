@@ -3,6 +3,14 @@
 (function () {
   "use strict";
 
+  // ---- a hello for the curious (devtools)
+  try {
+    console.log("%cjojo.%c  Software Engineer", "color:#FF6A2C;font-size:20px;font-weight:700", "color:#6f665f;font-size:14px");
+    console.log("%cYou found me! If our paths cross, let's talk. 👋", "color:#1a1a1a;font-size:13px");
+    console.log("%c✉ jotaro.yuza@gmail.com   ⌥ github.com/joj0hq", "color:#9a908a;font-size:12px");
+    console.log("%c↑↑↓↓←→←→ B A", "color:#FF6A2C;font-size:11px");
+  } catch (e) {}
+
   // ---- scroll reveal: animate [data-reveal] elements as they enter the viewport
   function initReveal() {
     var els = document.querySelectorAll("[data-reveal]");
@@ -115,6 +123,37 @@
           });
         });
       });
+    }
+
+    // ---- time-based greeting (subtle)
+    var g = document.querySelector("[data-greeting]");
+    if (g) {
+      var ja = (document.documentElement.lang || "ja").indexOf("ja") === 0;
+      var h = new Date().getHours();
+      var emoji, txt;
+      if (h >= 5 && h < 11) { emoji = "🌅"; txt = ja ? "おはようございます" : "Good morning"; }
+      else if (h >= 11 && h < 18) { emoji = "☀️"; txt = ja ? "こんにちは" : "Good afternoon"; }
+      else { emoji = "🌙"; txt = ja ? "こんばんは" : "Good evening"; }
+      g.textContent = emoji + " " + txt;
+    }
+
+    // ---- konami code -> sauna "ととのう"
+    var seq = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65], kp = 0;
+    document.addEventListener("keydown", function (e) {
+      kp = (e.keyCode === seq[kp]) ? kp + 1 : (e.keyCode === seq[0] ? 1 : 0);
+      if (kp === seq.length) { kp = 0; totonou(); }
+    });
+    function totonou() {
+      if (document.querySelector(".sauna-overlay")) return;
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var jp = (document.documentElement.lang || "ja").indexOf("ja") === 0;
+      var o = document.createElement("div");
+      o.className = "sauna-overlay";
+      var steam = reduce ? "" : '<span class="steam"></span><span class="steam"></span><span class="steam"></span><span class="steam"></span><span class="steam"></span>';
+      o.innerHTML = steam + '<div class="sauna-msg">🧖 ' + (jp ? "ととのいました…" : "Totonou ✨") + '</div>';
+      document.body.appendChild(o);
+      setTimeout(function () { o.classList.add("out"); }, 2600);
+      setTimeout(function () { if (o.parentNode) o.parentNode.removeChild(o); }, 3300);
     }
   });
 })();

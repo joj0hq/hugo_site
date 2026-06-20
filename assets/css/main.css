@@ -550,3 +550,20 @@ a.cred-org:hover { color: var(--accent); }
 .feat-arrow { align-self: flex-end; color: var(--faint); display: inline-flex; transition: color .2s; }
 .feat-card:hover .feat-arrow { color: var(--accent); }
 @media (max-width: 900px) { .featured { grid-template-columns: 1fr; } }
+
+/* hero time-based greeting */
+.hero-greeting { font-family: var(--sans); font-size: 13px; color: var(--faint); letter-spacing: .3px; margin: 0 0 12px; min-height: 1em; }
+.hero-greeting:empty { display: none; }
+
+/* konami sauna easter egg */
+.sauna-overlay { position: fixed; inset: 0; z-index: 200; pointer-events: none; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(circle at 50% 62%, rgba(255,106,44,0.10), rgba(250,247,245,0) 62%); animation: saunaFade .4s ease both; }
+.sauna-overlay.out { opacity: 0; transition: opacity .6s ease; }
+@keyframes saunaFade { from { opacity: 0; } to { opacity: 1; } }
+.sauna-msg { font-family: var(--serif-jp); font-size: clamp(28px,5vw,52px); font-weight: 600; color: var(--ink); background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); padding: 18px 38px; border-radius: 999px; box-shadow: 0 30px 60px -30px rgba(60,40,20,.32); }
+.steam { position: absolute; bottom: -80px; width: 16px; height: 240px; border-radius: 40%; background: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,.6)); filter: blur(7px); animation: steamRise 3s ease-in forwards; }
+.steam:nth-child(1) { left: 38%; animation-delay: 0s; }
+.steam:nth-child(2) { left: 46%; animation-delay: .35s; }
+.steam:nth-child(3) { left: 54%; animation-delay: .15s; }
+.steam:nth-child(4) { left: 61%; animation-delay: .5s; }
+.steam:nth-child(5) { left: 43%; animation-delay: .65s; }
+@keyframes steamRise { 0% { transform: translateY(0) scaleX(1); opacity: 0; } 25% { opacity: .85; } 100% { transform: translateY(-95vh) scaleX(1.7); opacity: 0; } }
