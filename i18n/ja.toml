@@ -13,6 +13,10 @@ other = "検索"
 
 [section_product]
 other = "Product"
+[section_featured]
+other = "Featured"
+[src_sizu]
+other = "しずかなインターネット"
 [section_timeline]
 other = "Timeline"
 [stat_years]

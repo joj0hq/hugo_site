@@ -3,7 +3,7 @@
 {{- $items := slice -}}
 {{- $seen := slice -}}
 {{- /* External feeds first so cross-posted articles surface with their platform label */ -}}
-{{- $feeds := slice (dict "url" "https://zenn.dev/jojo/feed" "source" "Zenn") (dict "url" "https://sizu.me/joj0hq/rss" "source" "しずかなインターネット") -}}
+{{- $feeds := slice (dict "url" "https://zenn.dev/jojo/feed" "source" "Zenn") (dict "url" "https://sizu.me/joj0hq/rss" "source" (i18n "src_sizu")) -}}
 {{- range $feeds -}}
   {{- $src := .source -}}
   {{- $t := try (resources.GetRemote .url) -}}
@@ -90,6 +90,23 @@
 </section>
 {{ end }}
 
+<!-- FEATURED -->
+{{ with .Params.featured }}
+<section class="section section-tight">
+  <div class="h-section" data-reveal>{{ i18n "section_featured" }}</div>
+  <div class="featured" data-reveal>
+    {{ range . }}
+    <a class="feat-card" href="{{ if .external }}{{ .url }}{{ else }}{{ .url | relURL }}{{ end }}"{{ if .external }} target="_blank" rel="noopener"{{ end }}>
+      <span class="feat-src">{{ .source }}</span>
+      <span class="feat-title">{{ .title }}</span>
+      {{ with .desc }}<span class="feat-desc">{{ . }}</span>{{ end }}
+      <span class="feat-arrow">{{ if .external }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>{{ else }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>{{ end }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
 <!-- TIMELINE -->
 {{ if $posts }}
 <section class="section">
@@ -108,7 +125,7 @@
     <span class="tl-more-label">{{ i18n "more_on" }}</span>
     <a class="tl-srclink src-blog" href="{{ "posts" | relLangURL }}">{{ i18n "section_blog" }}</a>
     {{ with $zenn }}<a class="tl-srclink src-zenn" href="{{ . }}" target="_blank" rel="noopener">Zenn</a>{{ end }}
-    {{ with $sizu }}<a class="tl-srclink src-sizu" href="{{ . }}" target="_blank" rel="noopener">しずかなインターネット</a>{{ end }}
+    {{ with $sizu }}<a class="tl-srclink src-sizu" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "src_sizu" }}</a>{{ end }}
   </div>
 </section>
 {{ end }}
