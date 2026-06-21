@@ -10,6 +10,8 @@ other = "About"
 other = "Contact"
 [nav_search]
 other = "Search"
+[skip_to_content]
+other = "Skip to content"
 
 [section_product]
 other = "Projects"

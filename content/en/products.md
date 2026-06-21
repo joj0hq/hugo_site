@@ -26,7 +26,7 @@ projects:
     formerly: "formerly micce"
     status: "ended"
     tags: ["Travel", "Mobile"]
-    images: ["/images/micce_travel.png"]
+    images: ["/images/micce_travel.webp"]
     overview: "A travel-support app that lets you complete everything from trip planning to booking in a single app."
     role: "Founder / Software Engineer"
     contributions:

@@ -82,6 +82,8 @@
 {{ end -}}
 {{- range .AllTranslations -}}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{ if eq .Lang "ja" }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{ end -}}
 {{ end -}}
 
 {{- partial "extend_head.html" . -}}

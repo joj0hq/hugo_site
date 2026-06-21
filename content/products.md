@@ -26,7 +26,7 @@ projects:
     formerly: "旧ミッケ"
     status: "ended"
     tags: ["旅行", "モバイル"]
-    images: ["/images/micce_travel.png"]
+    images: ["/images/micce_travel.webp"]
     overview: "旅行プラン作成から予約まで、すべてを 1 つのアプリで完結できる旅行支援アプリ。"
     role: "Founder / Software Engineer"
     contributions:

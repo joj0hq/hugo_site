@@ -27,7 +27,7 @@
 
     {{ with $p.images }}
     <div class="cs-images">
-      {{ range . }}<img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">{{ end }}
+      {{ range $i, $img := . }}<img src="{{ $img | relURL }}" alt="{{ $p.name }} — {{ add $i 1 }}" loading="lazy" decoding="async">{{ end }}
     </div>
     {{ end }}
 
