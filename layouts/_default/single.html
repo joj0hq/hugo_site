@@ -10,8 +10,10 @@
   </header>
 
   {{ with .Params.cover.image }}
+  {{ $cw := 0 }}{{ $ch := 0 }}
+  {{ if hasPrefix . "/" }}{{ with (resources.Get (strings.TrimPrefix "/" .)) }}{{ if eq .MediaType.MainType "image" }}{{ $cw = .Width }}{{ $ch = .Height }}{{ end }}{{ end }}{{ end }}
   <div class="article-cover" data-reveal>
-    <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy" decoding="async">
+    <img src="{{ . | relURL }}" alt="{{ $.Title }}"{{ if and (gt $cw 0) (gt $ch 0) }} width="{{ $cw }}" height="{{ $ch }}"{{ end }} loading="lazy" decoding="async">
   </div>
   {{ end }}
 

@@ -5,6 +5,15 @@ pagination:
   pagerSize: 5
 theme: PaperMod
 
+# static/images も assets として読めるようにし、本文画像の実寸取得（CLS対策）に使う。
+# mounts を宣言すると assets ターゲットのデフォルトが消えるため、assets→assets も明示する。
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - source: static/images
+      target: assets/images
+
 # 多言語設定
 defaultContentLanguage: ja
 defaultContentLanguageInSubdir: false

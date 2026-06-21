@@ -1,16 +1,16 @@
-+++
-categories = ["10X"]
-tags = ["10X", "在籍エントリ", "エンジニア"]
-date = "2024-12-17T00:00:00+09:00"
-description = "10Xにエンジニアとして入社して2年間が経とうとしているので今までやったこと・考えていたことを振り返ります。"
-title = "10Xのエンジニアとして入社から2年目を振り返る"
-type = "post"
-cover.image = "/images/2024-12-17.webp"
-cover.linkFullImages = true
-cover.responsiveImages = true
-cover.relative = true
-
-+++
+---
+categories: ["10X"]
+tags: ["10X", "在籍エントリ", "エンジニア"]
+date: "2024-12-17T00:00:00+09:00"
+description: "10Xにエンジニアとして入社して2年間が経とうとしているので今までやったこと・考えていたことを振り返ります。"
+title: "10Xのエンジニアとして入社から2年目を振り返る"
+type: "post"
+cover:
+  image: "/images/2024-12-17.webp"
+  linkFullImages: true
+  responsiveImages: true
+  relative: true
+---
 
 ## はじめに
 

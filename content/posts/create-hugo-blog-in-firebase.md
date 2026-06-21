@@ -1,14 +1,14 @@
-+++
-categories = ["engineering"]
-tags = ["hugo", "firebase"]
-date = "2019-11-10"
-description = "HugoとFirebase Hostingを使って、高速に読み込める静的Webサイトをさくっと構築する手順を解説。静的サイトジェネレーターの基礎からデプロイまでをまとめた入門記事です。"
-linktitle = ""
-title = "【10分で実装！】HugoとFirebaseで静的なWebサイトをつくる"
-type = "post"
-cover.image = "/images/2019/11/2019-11-10.webp"
-
-+++
+---
+categories: ["engineering"]
+tags: ["hugo", "firebase"]
+date: "2019-11-10"
+description: "HugoとFirebase Hostingを使って、高速に読み込める静的Webサイトをさくっと構築する手順を解説。静的サイトジェネレーターの基礎からデプロイまでをまとめた入門記事です。"
+linktitle: ""
+title: "【10分で実装！】HugoとFirebaseで静的なWebサイトをつくる"
+type: "post"
+cover:
+  image: "/images/2019/11/2019-11-10.webp"
+---
 
 ## 今回つくるもの
 

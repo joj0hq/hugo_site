@@ -1,1 +1,9 @@
-<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- $dest := .Destination -}}
+{{- $w := 0 }}{{ $h := 0 -}}
+{{- /* For local images, read real dimensions at build time to reserve space (avoid CLS). */ -}}
+{{- if and $dest (hasPrefix $dest "/") -}}
+  {{- with (resources.Get (strings.TrimPrefix "/" $dest)) -}}
+    {{- if eq .MediaType.MainType "image" -}}{{ $w = .Width }}{{ $h = .Height }}{{- end -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $dest | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if and (gt $w 0) (gt $h 0) }} width="{{ $w }}" height="{{ $h }}"{{ end }} loading="lazy" decoding="async">

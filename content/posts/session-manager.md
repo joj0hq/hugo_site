@@ -1,13 +1,12 @@
-+++
-categories = ["http"]
-tags = ["http", "book", "beginner"]
-date = "2019-07-16"
-description = "セッション管理の不備について"
-linktitle = ""
-title = "セッション管理の不備"
-type = "post"
-
-+++
+---
+categories: ["http"]
+tags: ["http", "book", "beginner"]
+date: "2019-07-16"
+description: "セッション管理の不備について"
+linktitle: ""
+title: "セッション管理の不備"
+type: "post"
+---
 
 ## URL 埋め込みのセッション ID
 

@@ -39,7 +39,7 @@
       {{ $ver = .version }}
       {{ $rd := (try (time.AsTime .currentVersionReleaseDate)).Value }}{{ with $rd }}{{ $date = .Format "2006.01.02" }}{{ end }}
       {{ with .releaseNotes }}{{ $notes = (split (trim . " \n") "\n") }}{{ end }}
-    {{ end }}{{ end }}{{ end }}
+    {{ end }}{{ end }}{{ else }}{{ warnf "products: App Store lookup failed for id %s (%v)" . $lk.Err }}{{ end }}
     <div class="cs-release{{ if not $ver }} is-loading{{ end }}" data-appstore-id="{{ . }}" data-country="{{ $country }}">
       <div class="cs-rel-head">
         <span class="cs-label" style="margin:0">{{ i18n "latest_release" }}</span>

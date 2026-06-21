@@ -1,14 +1,14 @@
-+++
-categories = ["AWS"]
-tags = ["terraform", "aws", "beginner"]
-date = "2019-07-15"
-description = "Terraformを使ってAWSのVPC+EC2を構築するインフラ自動化の入門記事。コンソールでのぽちぽち作業をコード化し、環境の作成・削除をコマンド一つで行う方法を具体例で解説します。"
-linktitle = ""
-title = "【AWS入門】terraformでVPC+EC2構築を自動化する"
-type = "post"
-cover.image = "/images/2019/07/terraform-beginner.webp"
-
-+++
+---
+categories: ["AWS"]
+tags: ["terraform", "aws", "beginner"]
+date: "2019-07-15"
+description: "Terraformを使ってAWSのVPC+EC2を構築するインフラ自動化の入門記事。コンソールでのぽちぽち作業をコード化し、環境の作成・削除をコマンド一つで行う方法を具体例で解説します。"
+linktitle: ""
+title: "【AWS入門】terraformでVPC+EC2構築を自動化する"
+type: "post"
+cover:
+  image: "/images/2019/07/terraform-beginner.webp"
+---
 
 ## 今回作るシンプルなインフラ設計
 

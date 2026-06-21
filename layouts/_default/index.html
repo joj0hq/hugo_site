@@ -6,7 +6,8 @@
 {{- $feeds := slice (dict "url" "https://zenn.dev/jojo/feed" "source" "Zenn") (dict "url" "https://sizu.me/joj0hq/rss" "source" (i18n "src_sizu")) -}}
 {{- range $feeds -}}
   {{- $src := .source -}}
-  {{- $t := try (resources.GetRemote .url) -}}
+  {{- $url := .url -}}
+  {{- $t := try (resources.GetRemote $url) -}}
   {{- with $t.Value -}}
     {{- $p := try (transform.Unmarshal .) -}}
     {{- with $p.Value -}}
@@ -17,7 +18,11 @@
           {{- $seen = $seen | append (lower .title) -}}
         {{- end -}}
       {{- end -}}
+    {{- else -}}
+      {{- warnf "home timeline: could not parse feed %s" $url -}}
     {{- end -}}
+  {{- else -}}
+    {{- warnf "home timeline: feed unreachable %s (%v)" $url $t.Err -}}
   {{- end -}}
 {{- end -}}
 {{- range (where .Site.RegularPages "Section" "posts").ByDate.Reverse -}}
