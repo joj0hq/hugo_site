@@ -12,6 +12,8 @@ other = "Contact"
 other = "最近観た映画"
 [nav_search]
 other = "Search"
+[theme_toggle]
+other = "テーマ切り替え"
 [skip_to_content]
 other = "本文へスキップ"
 

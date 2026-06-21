@@ -1,7 +1,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script>document.documentElement.classList.add('js')</script>
+<script>
+(function(){
+  var d=document.documentElement;
+  d.classList.add('js');
+  try{
+    var s=localStorage.getItem('theme');
+    var m=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if(s==='dark'||(!s&&m))d.setAttribute('data-theme','dark');
+  }catch(e){}
+})();
+</script>
 {{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
 <meta name="robots" content="index, follow">
 {{- else }}

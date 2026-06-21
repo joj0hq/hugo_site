@@ -12,6 +12,8 @@ other = "Contact"
 other = "Recently watched"
 [nav_search]
 other = "Search"
+[theme_toggle]
+other = "Toggle theme"
 [skip_to_content]
 other = "Skip to content"
 

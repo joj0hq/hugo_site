@@ -60,6 +60,26 @@
       });
     }
 
+    // ---- theme toggle (light <-> dark, persisted in localStorage)
+    var themeBtns = document.querySelectorAll("[data-theme-toggle]");
+    if (themeBtns.length) {
+      var metaTheme = document.querySelector('meta[name="theme-color"]');
+      var applyMeta = function (dark) {
+        if (metaTheme) metaTheme.setAttribute("content", dark ? "#16130f" : "#FAF7F5");
+      };
+      applyMeta(document.documentElement.getAttribute("data-theme") === "dark");
+      themeBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var d = document.documentElement;
+          var dark = d.getAttribute("data-theme") === "dark";
+          if (dark) { d.removeAttribute("data-theme"); }
+          else { d.setAttribute("data-theme", "dark"); }
+          try { localStorage.setItem("theme", dark ? "light" : "dark"); } catch (e) {}
+          applyMeta(!dark);
+        });
+      });
+    }
+
     // ---- work project tabs (toggle pre-rendered panels)
     var workTabs = document.querySelectorAll("[data-work-tab]");
     if (workTabs.length) {

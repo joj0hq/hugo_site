@@ -23,7 +23,7 @@ There is no test suite, linter, or build step beyond `hugo`. `public/` is a buil
 
 - Custom layouts: `layouts/_default/{baseof,index,products,about,contact,single,list}.html`, `layouts/posts/list.html`, `layouts/partials/{head,nav,footer,svg}.html`. Styling/behavior: `assets/css/main.css` + `assets/js/main.js`.
 - **The nav is the custom `layouts/partials/nav.html` and ignores the `menu:` config in `config.yaml`.** Editing menu config has no visual effect — edit the partial.
-- **Light theme only**: `defaultTheme: light`, `disableThemeToggle: true`. No dark/auto toggle.
+- **Custom dark mode** (not PaperMod's): warm dark palette toggled via `[data-theme="dark"]` on `<html>`. A pre-paint script in `layouts/partials/head.html` applies the saved choice (`localStorage` key `theme`) or `prefers-color-scheme`; `main.js` wires the nav toggle button; the palette lives in a `:root[data-theme="dark"]` block in `assets/css/main.css`. The PaperMod config (`defaultTheme: light`, `disableThemeToggle: true`) is irrelevant since the custom nav/CSS handle theming.
 - `legacy/` holds the previous PaperMod-based design + the imported `Portfolio.dc.html` source. It is **not built by Hugo** (Hugo only processes `content/`, `layouts/`, `assets/`, `static/`, `data/`, `i18n/`, `archetypes/`, `themes/`). See `legacy/README.md` to restore the old look.
 
 ## Content & i18n model
