@@ -616,3 +616,14 @@ body::after {
 .cs-rel-skel span:nth-child(2) { width: 88%; }
 .cs-rel-skel span:nth-child(3) { width: 66%; }
 .cs-rel-skel span::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.6), transparent); animation: shimmer 1.3s infinite; }
+.film-strip-wrap { margin-top: 34px; }
+.film-strip-head { display: flex; align-items: baseline; margin-bottom: 14px; }
+.film-strip-label { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--muted); }
+.film-strip { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 12px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; }
+.film-strip::-webkit-scrollbar { height: 6px; }
+.film-strip::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 10px; }
+.film-strip::-webkit-scrollbar-track { background: transparent; }
+.film-strip-item { flex: 0 0 auto; width: 108px; aspect-ratio: 2 / 3; scroll-snap-align: start; border-radius: 9px; overflow: hidden; background: var(--line-soft); box-shadow: 0 8px 20px -12px rgba(0,0,0,.4); transition: transform .2s ease; }
+.film-strip-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.film-strip-item:hover { transform: translateY(-4px); }
+@media (prefers-reduced-motion: reduce) { .film-strip-item { transition: none; } .film-strip-item:hover { transform: none; } }

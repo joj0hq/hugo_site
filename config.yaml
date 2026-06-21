@@ -5,6 +5,11 @@ pagination:
   pagerSize: 5
 theme: PaperMod
 
+# 外部取得（Zenn/sizu/Filmarks/iTunes）を一定時間でリフレッシュし、デプロイのたびに最新化する。
+caches:
+  getresource:
+    maxAge: "2h"
+
 # static/images も assets として読めるようにし、本文画像の実寸取得（CLS対策）に使う。
 # mounts を宣言すると assets ターゲットのデフォルトが消えるため、assets→assets も明示する。
 module:
@@ -117,6 +122,7 @@ minify:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   author: joj0hq
+  filmarksUser: "jo999jo" # Filmarks のユーザー。/films/ と About の映画ストリップで使用
   images: ["https://joj0hq.com/images/og-default.png"]
   DateFormat: "2006/01/02"
   defaultTheme: light # dark, light, auto

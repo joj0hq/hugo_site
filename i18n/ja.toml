@@ -8,6 +8,8 @@ other = "Writing"
 other = "About"
 [nav_contact]
 other = "Contact"
+[recent_films]
+other = "最近観た映画"
 [nav_search]
 other = "Search"
 [skip_to_content]

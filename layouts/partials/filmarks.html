@@ -1,0 +1,24 @@
+{{- /* Fetch a Filmarks user's recent films at build time and return a slice of
+       dicts: {url, title, score, poster}. Posters are downloaded and converted to
+       self-hosted WebP (with hotlink fallback). Call with (dict "user" "<id>" "limit" N).
+       Use via partialCached keyed by user so the page is fetched only once per build. */ -}}
+{{- $user := .user -}}
+{{- $limit := .limit | default 12 -}}
+{{- $films := slice -}}
+{{- with $user -}}
+  {{- $url := printf "https://filmarks.com/users/%s" . -}}
+  {{- $opts := dict "headers" (dict "User-Agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36") -}}
+  {{- $res := try (resources.GetRemote $url $opts) -}}
+  {{- with $res.Value -}}
+    {{- $re := `(?s)c-content-card__title"><a href="(/movies/\d+)[^"]*">([^<]+)<span>.*?c-rating__score">([0-9.]+)</div>.*?c-content__jacket"[^>]*><img alt="[^"]*" src="([^"]+)"` -}}
+    {{- range (findRESubmatch $re .Content $limit) -}}
+      {{- $poster := index . 4 -}}
+      {{- $dl := try (resources.GetRemote $poster $opts) -}}
+      {{- with $dl.Value -}}{{- if eq .MediaType.MainType "image" -}}{{- $pr := try (.Resize "300x webp q80") -}}{{- with $pr.Value -}}{{- $poster = .RelPermalink -}}{{- end -}}{{- end -}}{{- end -}}
+      {{- $films = $films | append (dict "url" (printf "https://filmarks.com%s" (index . 1)) "title" (htmlUnescape (index . 2)) "score" (index . 3) "poster" $poster) -}}
+    {{- end -}}
+  {{- else -}}
+    {{- warnf "filmarks: could not fetch %s (%v)" $url $res.Err -}}
+  {{- end -}}
+{{- end -}}
+{{- return $films -}}

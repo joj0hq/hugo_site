@@ -5,3 +5,4 @@ public/*
 .firebaserc
 .firebase/*
 *.log
+resources/_gen/
