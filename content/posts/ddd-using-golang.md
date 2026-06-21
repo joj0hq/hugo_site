@@ -1,6 +1,6 @@
 ---
 title: "【DDD】Golangを使ってモデルでドメイン知識を表現してみた"
-description: "【DDD】Golangを使ってモデルでドメイン知識を表現してみた"
+description: "ドメイン駆動設計(DDD)の考え方をGolangで実践。ドメイン知識をモデルとしてコードに落とし込む方法を、簡単な具体例を交えて解説します。Go Advent Calendar 2021 寄稿記事。"
 emoji: "🍖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Go", "DDD", "ドメイン駆動設計", "アーキテクチャ", "初心者向け"]

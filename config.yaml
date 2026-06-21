@@ -24,7 +24,6 @@ languages:
           プロダクト開発,
           Blog,
           Portfolio,
-          PaperMod,
         ]
       homeInfoParams:
         Title: jojo
@@ -67,7 +66,6 @@ languages:
           Product Development,
           Blog,
           Portfolio,
-          PaperMod,
         ]
       homeInfoParams:
         Title: jojo

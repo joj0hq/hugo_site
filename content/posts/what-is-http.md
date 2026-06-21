@@ -2,7 +2,7 @@
 categories = ["http"]
 tags = ["http", "book", "beginner"]
 date = "2019-07-15"
-description = ""
+description = "HTTPとは何かを「Webサーバとクライアントの通信手段」という視点から、専門用語をかみ砕いて初心者向けに解説。リクエスト/レスポンスの仕組みまで5分で理解できる入門記事です。"
 linktitle = ""
 title = "【初心者必読】HTTPの基礎が5分でわかるWebを支える技術"
 type = "post"

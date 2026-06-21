@@ -6,7 +6,7 @@ topics: ["react", "redux", "js", "frontend", "初心者向け"]
 date: "2021-03-21"
 categories: ["engineering"]
 tags: ["gas", "おうちハック"]
-description: "観葉植物のためにおうちハックして温度管理自動化してみた"
+description: "観葉植物(ビカクシダ)のために、スマートハブとGASで室温を監視し暖房を自動でON/OFFするおうちハックの記録。温度データの可視化までを実例で紹介します。"
 ---
 
 ## 現状と課題

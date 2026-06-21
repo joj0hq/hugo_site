@@ -6,7 +6,7 @@ topics: ["react", "redux", "js", "frontend", "初心者向け"]
 date: "2021-03-21"
 categories: ["engineering"]
 tags: ["react", "redux", "js", "frontend", "初心者向け"]
-description: "【入門編】Reduxによる状態管理の仕組みを理解する"
+description: "Reduxによる状態管理の仕組みを、Action / Store / Reducerのデータフロー図をもとに入門者向けに整理。Reactと組み合わせて使う際の基本と3原則をわかりやすく解説します。"
 ---
 
 ## まず結論から
